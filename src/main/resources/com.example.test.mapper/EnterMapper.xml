@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.test.mapper.enteRecord">
+<select id="selectEr" resultType="put" parameterType="put">
+    select drugs.dno,dname,dunit,idnumber,dclassify,idtime,idtype,iremark,doperator
+     from inware,drugs where inware.dno = drugs.dno and drugs.dno = #{dno} and idtime = #{idtime};
+</select>
+<select id="selectAll" resultType="put">
+    select drugs.dno,dname,dunit,idnumber,dclassify,idtime,idtype,iremark,doperator
+    from inware,drugs where inware.dno = drugs.dno;
+</select>
+<insert id="addERecord" parameterType="put">
+insert into inware values(#{idnumber},#{idtime}.#{idtype},#{iremark},#{doperator},#{dno},#{wid});
+</insert>
+<update id="updateDrug" parameterType="put">
+    update drugs set dnumber = dnumber+#{idnumber} where drugs.dno = #{dno};
+</update>
+</mapper>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.test.mapper.checkMapper">
+<insert id="addcheck" parameterType="drugsCheck">
+    insert into drugscheck(ckno,ckdate,ckoperator,dpnumber,dno) values(#{ckno},#{ckdate},#{ckoperator},#{dpnumber},#{dno})
+</insert>
+    <update id ="updateCk" parameterType="drugsCheck">
+        update drugscheck set ckno =#{ckno},ckdate = #{ckdate},ckoperator = #{ckoperator},dpnumber=#{dpnumber} where dno = #{dno};
+        update drugs  set dnumber  = #{dpnumber} where dno = #{dno};
+    </update>
+<select id="selectCr" parameterType="drugsCheck">
+    select ckno,ckdate,ckoperator,dpnumber,drugs.dno dname,dclassify,dnumber,dunit,dprice from drugs,drugscheck
+    where drugs.dno = drugscheck.dno and  ckdate  = #{ckdate};
+</select>
+    <delete id="deleteCk" parameterType="drugscheck">
+        delete from drugscheck where dno = #{dno};
+    </delete>
+</mapper>

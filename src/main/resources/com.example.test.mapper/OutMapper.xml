@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.test.mapper.outRecord">
+    <select id="selectOr" resultType="out" parameterType="out">
+     select drugs.dno,dname,dunit,odnumber,dclassify,odtime,odtype,oremark,doperator
+     from outware,drugs where outware.dno = drugs.dno and drugs.dno = #{dno} and odtime = #{odtime};
+</select>
+ <insert id="addORecord" parameterType="out">
+        insert into outware values(#{odnumber},#{odtime}.#{odtype},#{oremark},#{doperator},#{dno},#{wid});
+</insert>
+    <select id="selectAll" resultType="out">
+    select drugs.dno,dname,dunit,odnumber,dclassify,odtime,odtype,oremark,doperator
+    from outware,drugs where outware.dno = drugs.dno;
+</select>
+</mapper>

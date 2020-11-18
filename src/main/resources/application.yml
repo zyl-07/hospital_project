@@ -1,0 +1,7 @@
+spring:
+  thymeleaf:
+    mode: HTML
+  profiles:
+    active: dev
+  messages:
+    basename: classpath:i18n/messages
