@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 /**
  * @author zyl
+ * 药品信息
  */
 @Controller
 @RequestMapping("/drugs")
@@ -19,18 +20,20 @@ import java.util.Map;
 public class DrugsController {
     @Autowired
     public drugService drugService;
-    @GetMapping("/{page}")
-    public String showPage(@PathVariable String page) throws Exception {
-        try {
-            return page;
-        } catch (Exception e){
-            e.printStackTrace();
-            throw new NotFoundException("未找到");
-        }
-    }
+//    @GetMapping("/{page}")
+//    public String showPage(@PathVariable String page) throws Exception {
+//        try {
+//            return page;
+//        } catch (Exception e){
+//            e.printStackTrace();
+//            throw new NotFoundException("未找到");
+//        }
+  //  }
 
     @RequestMapping("/adddrug")
     @ResponseBody
+
+    //添加药品
     public Map<String ,Object> adddrug(drugs drug){
         Map<String, Object> map = new HashMap<>();
                if( this.drugService.add(drug)==1) {
@@ -46,6 +49,8 @@ public class DrugsController {
     }
     @RequestMapping(value = "/findAll")
     @ResponseBody
+
+    //查询所以药品信息
     public Map<String,Object> findAlldrug(){
         Map<String,Object> map = new HashMap<>();
         List<drugs> list = this.drugService.findAll();
@@ -58,6 +63,7 @@ public class DrugsController {
        }
         return  map;
     }
+    //按条件查询（药品编号与名称）
     @RequestMapping(value = "/selectdrug")
     @ResponseBody
     public Map<String,Object> selectdrug(drugs drug){
@@ -74,6 +80,7 @@ public class DrugsController {
     }
     @RequestMapping("/deletedrug")
     @ResponseBody
+    //删除药品信息
     public Map<String,Object>deletedrug(drugs drug){
         Map<String,Object> map = new HashMap<>();
         if(this.drugService.deletedrug(drug)==1)
@@ -87,6 +94,8 @@ public class DrugsController {
     }
     @RequestMapping("/updatedrug")
     @ResponseBody
+
+    //修改药品信息
     public Map<String,Object>updatedrug(drugs drug){
         Map<String,Object> map = new HashMap<>();
         if(this.drugService.updatedrug(drug)==1)

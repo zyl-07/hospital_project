@@ -11,6 +11,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author zyl
+ * 药品盘存
+ */
 @Controller
 @RequestMapping("/checkdrugs")
 public class CheckController {
@@ -18,6 +22,7 @@ public class CheckController {
     private checkService checkService;
     @RequestMapping("/selectCk")
     @ResponseBody
+    //查询
     public Map<String,Object> selectCk(drugsCheck drugsCheck){
         List<drugsCheck> list = this.checkService.selectCk(drugsCheck);
         Map<String,Object> map  = new HashMap<>();
@@ -34,6 +39,7 @@ public class CheckController {
 
     @RequestMapping("/deleteCk")
     @ResponseBody
+    //删除
     public Map<String,Object> deleteCk(drugsCheck drugsCheck){
         Map<String, Object> map = new HashMap<>();
         if(this.checkService.deleteCk(drugsCheck)==1) {
@@ -47,6 +53,8 @@ public class CheckController {
 
     @RequestMapping("/addCk")
     @ResponseBody
+
+    //添加
     public Map<String,Object> addCk(drugsCheck drugsCheck){
         Map<String, Object> map = new HashMap<>();
         if(this.checkService.addCk(drugsCheck)==1) {
@@ -59,6 +67,8 @@ public class CheckController {
     }
     @RequestMapping("/updateCk")
     @ResponseBody
+
+    //修改
     public Map<String,Object> updateCk(drugsCheck drugsCheck){
         Map<String, Object> map = new HashMap<>();
         if(this.checkService.updateCk(drugsCheck)==1) {

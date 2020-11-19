@@ -14,6 +14,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author zyl
+ * 用户信息
+ */
 @Controller
 @RequestMapping("/admin")
 @CrossOrigin

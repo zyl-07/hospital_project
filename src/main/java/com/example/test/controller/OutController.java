@@ -11,6 +11,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author zyl
+ * 出库接口控制
+ */
 @Controller
 @RequestMapping("/outware")
 public class OutController {

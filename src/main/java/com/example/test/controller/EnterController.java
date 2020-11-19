@@ -12,6 +12,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * @author zyl
+ * 入库接口控制
+ */
 @Controller
 @RequestMapping("/inware")
 public class EnterController {
