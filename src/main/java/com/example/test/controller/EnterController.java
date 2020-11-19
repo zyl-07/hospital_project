@@ -21,9 +21,14 @@ public class EnterController {
     @RequestMapping("/addEr")
     @ResponseBody
     public Map<String ,Object> addEr(put put){
-        this.putService.addEr(put);
-        Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
+        Map<String,Object> map = new HashMap<>();
+        if(this.putService.addEr(put)==1)
+        {
+            map.put("resultCode",1);
+        }
+        else{
+            map.put("resultCode",-1);
+        }
         return map;
     }
     @RequestMapping("/selectEr")

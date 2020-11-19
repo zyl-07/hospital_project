@@ -49,8 +49,13 @@ public class DrugsController {
     public Map<String,Object> findAlldrug(){
         Map<String,Object> map = new HashMap<>();
         List<drugs> list = this.drugService.findAll();
-        map.put("resultCode",1);
-        map.put("message",list);
+       if(null!=list) {
+           map.put("resultCode", 1);
+           map.put("message", list);
+       }
+       else{
+           map.put("resultCode", -1);
+       }
         return  map;
     }
     @RequestMapping(value = "/selectdrug")
@@ -58,24 +63,39 @@ public class DrugsController {
     public Map<String,Object> selectdrug(drugs drug){
         Map<String,Object> map = new HashMap<>();
         List<drugs> list = this.drugService.selectdrug(drug);
-        map.put("resultCode",1);
-        map.put("message",list);
+        if(null!=list) {
+            map.put("resultCode", 1);
+            map.put("message", list);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return  map;
     }
     @RequestMapping("/deletedrug")
     @ResponseBody
     public Map<String,Object>deletedrug(drugs drug){
-        this.drugService.deletedrug(drug);
         Map<String,Object> map = new HashMap<>();
-        map.put("resultCode",1);
+        if(this.drugService.deletedrug(drug)==1)
+        {
+            map.put("resultCode",1);
+        }
+        else{
+            map.put("resultCode",-1);
+        }
         return map;
     }
     @RequestMapping("/updatedrug")
     @ResponseBody
     public Map<String,Object>updatedrug(drugs drug){
-        this.drugService.updatedrug(drug);
         Map<String,Object> map = new HashMap<>();
-        map.put("resultCode",1);
+        if(this.drugService.updatedrug(drug)==1)
+        {
+            map.put("resultCode",1);
+        }
+        else{
+            map.put("resultCode",-1);
+        }
         return map;
     }
 }

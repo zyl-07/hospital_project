@@ -20,9 +20,14 @@ public class OutController {
     @RequestMapping("/addOr")
     @ResponseBody
     public Map<String ,Object> addEr(out out){
-        this.outService.addOr(out);
-        Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
+        Map<String,Object> map = new HashMap<>();
+        if(this.outService.addOr(out)==1)
+        {
+            map.put("resultCode",1);
+        }
+        else{
+            map.put("resultCode",-1);
+        }
         return map;
     }
     @RequestMapping("/selectOr")

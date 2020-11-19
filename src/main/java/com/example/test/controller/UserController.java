@@ -26,9 +26,9 @@ public class UserController {
                                           String password){
         Map<String,Object> map  = new HashMap<>();
         List<user> list = this.userService.checkUser(username,password);
-        for (user user:list) {
-            System.out.println(user.getUsername());
-        }
+       // for (user user:list) {
+       //     System.out.println(user.getUsername());
+      //  }
         if(this.userService.checkUser(username,password).size()!=0){
             map.put("resultCode",1);
             return map;
