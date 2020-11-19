@@ -14,9 +14,15 @@ public class outServiceImpl implements outService {
     @Resource
     private outRecord outRecord;
     @Override
-    public void addOr(out out) {
-        this.outRecord.addORecord(out);
-        this.outRecord.updateDrug(out);
+    public int addOr(out out) {
+       if(this.outRecord.addORecord(out)!=0
+        &&this.outRecord.updateDrug(out)!=0)
+       {
+           return 1;
+       }
+       else{
+           return -1;
+       }
     }
 
     @Override

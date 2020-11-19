@@ -5,7 +5,7 @@ import com.example.test.pojo.ware;
 import java.util.List;
 
 public interface wareService {
-    void addWare(ware ware);
-    void deleteWare(ware ware);
+    int addWare(ware ware);
+    int deleteWare(ware ware);
     List<ware> selectAll();
 }

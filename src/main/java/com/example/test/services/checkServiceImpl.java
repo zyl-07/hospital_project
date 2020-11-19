@@ -18,19 +18,27 @@ public class checkServiceImpl implements  checkService{
 
     @Override
     public int deleteCk(drugsCheck drugsCheck) {
-        this.checkMapper.deleteCk(drugsCheck);
-        return 1;
+        if(this.checkMapper.deleteCk(drugsCheck)!=0)
+        {   return 1;}
+        else
+        {   return -1;}
     }
 
     @Override
     public int updateCk(drugsCheck drugsCheck) {
-        this.checkMapper.updateCk(drugsCheck);
-        return 1;
+        if (this.checkMapper.updateCk(drugsCheck) != 0) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     @Override
     public int  addCk(drugsCheck drugsCheck) {
-        this.checkMapper.addcheck(drugsCheck);
-        return 1;
+        if (this.checkMapper.addcheck(drugsCheck) != 0) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }

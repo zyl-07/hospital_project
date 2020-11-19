@@ -6,4 +6,8 @@
     <select id="checkuser" resultType="user">
         select username,password from user where username = #{param1} and password = #{param2};
     </select>
+    <insert id="addUser"parameterType="user">
+        insert into user(addr,brthday,email,invite_code,password,phone_number,rname,sex,username)
+        values(#{addr},#{brthday},#{email},#{invite_code},#{password},#{phone_number},#{rname},#{sex},#{username});
+    </insert>
 </mapper>

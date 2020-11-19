@@ -12,13 +12,25 @@ public class wareServiceImpl implements wareService {
     @Resource
     private wareMapper wareMapper;
     @Override
-    public void addWare(ware ware) {
-        this.wareMapper.addWare(ware);
+    public int addWare(ware ware) {
+        if(this.wareMapper.addWare(ware)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
     }
 
     @Override
-    public void deleteWare(ware ware) {
-        this.wareMapper.deleteWare(ware);
+    public int deleteWare(ware ware) {
+        if(this.wareMapper.deleteWare(ware)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
     }
 
     @Override

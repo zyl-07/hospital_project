@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface outRecord {
     List<out> selectAll();
-    void addORecord(out out);
-    void updateDrug(out out);
+    int addORecord(out out);
+    int updateDrug(out out);
     List<out> selectOr(out out);
 }

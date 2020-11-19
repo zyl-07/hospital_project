@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface userMapper {
     List<user> checkuser(String username,String password);
-    void addUser(user user);
+    int addUser(user user);
 }

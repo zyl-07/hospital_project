@@ -20,17 +20,27 @@ public class WareController {
     @RequestMapping("/addWare")
     @ResponseBody
     public Map<String,Object> addWare(ware ware){
-        this.wareService.addWare(ware);
         Map<String,Object> map = new HashMap<>();
-        map.put("resultCode",1);
+        if(this.wareService.addWare(ware)==1){
+            map.put("resultCode",1);
+        }
+        else{
+            map.put("resultCode",-1);
+        }
+
         return map;
     }
     @RequestMapping("/deleteWare")
     @ResponseBody
     public Map<String,Object> deleteWare(ware ware){
-        this.wareService.deleteWare(ware);
         Map<String,Object> map = new HashMap<>();
-        map.put("resultCode",1);
+        if(this.wareService.deleteWare(ware)==1){
+            map.put("resultCode",1);
+        }
+        else{
+            map.put("resultCode",-1);
+        }
+
         return map;
     }
     @RequestMapping("/findAll")

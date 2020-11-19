@@ -14,9 +14,15 @@ public class putServiceImpl implements putService {
     @Resource
     private enteRecord enteRecord;
     @Override
-    public void addEr(put put) {
-        this.enteRecord.addERecord(put);
-        this.enteRecord.updateDrug(put);
+    public int addEr(put put) {
+        if (this.enteRecord.addERecord(put)!=0&&
+        this.enteRecord.updateDrug(put)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
     }
 
     @Override

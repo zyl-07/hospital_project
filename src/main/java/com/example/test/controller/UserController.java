@@ -40,4 +40,18 @@ public class UserController {
         }
 
     }
+
+    @RequestMapping("/addUser")
+    @ResponseBody
+    public Map<String ,Object> addUser(user user){
+        Map<String,Object> map  = new HashMap<>();
+        if(this.userService.addUser(user)==1){
+            map.put("resultCode",1);
+        }
+        else{
+            map.put("resultCode",1);
+
+        }
+        return map;
+    }
 }

@@ -16,4 +16,14 @@ public class userServiceImpl implements userService{
     public List<user> checkUser(String username,String password) {
         return this.userMapper.checkuser(username,password);
     }
+    @Override
+    public int addUser(user user){
+        if(this.userMapper.addUser(user)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
 }

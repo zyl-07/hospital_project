@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface outService {
 
-    void addOr(out out);
+    int addOr(out out);
     List<out> findAll();
     List<out> selectOr(out out);
 }
