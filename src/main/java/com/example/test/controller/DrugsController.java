@@ -32,11 +32,17 @@ public class DrugsController {
     @RequestMapping("/adddrug")
     @ResponseBody
     public Map<String ,Object> adddrug(drugs drug){
-         this.drugService.add(drug);
-        Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
-        return map;
+        Map<String, Object> map = new HashMap<>();
+               if( this.drugService.add(drug)==1) {
 
+                   map.put("resultCode", 1);
+
+               }
+               else{
+                   map.put("resultCode", -1);
+
+               }
+            return map;
     }
     @RequestMapping(value = "/findAll")
     @ResponseBody

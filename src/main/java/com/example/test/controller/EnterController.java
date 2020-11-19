@@ -31,8 +31,14 @@ public class EnterController {
     public Map<String,Object>  selectEr(put put){
         List<put> list = this.putService.selectEr(put);
         Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
-        map.put("message",list);
+        if(null!=list) {
+
+            map.put("message", list);
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return map;
     }
     @RequestMapping("/findAll")
@@ -40,8 +46,14 @@ public class EnterController {
     public Map<String,Object>  findAll(put put){
         List<put> list = this.putService.findAll();
         Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
-        map.put("message",list);
+        if(null!=list) {
+
+            map.put("message", list);
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return map;
     }
 }

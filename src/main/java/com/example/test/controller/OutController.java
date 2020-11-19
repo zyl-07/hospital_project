@@ -30,8 +30,14 @@ public class OutController {
     public Map<String,Object>  selectOr(out out){
         List<out> list = this.outService.selectOr(out);
         Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
-        map.put("message",list);
+        if(null!=list) {
+
+            map.put("message", list);
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return map;
     }
     @RequestMapping("/findAll")
@@ -39,8 +45,14 @@ public class OutController {
     public Map<String,Object>  findAll(out out){
         List<out> list = this.outService.findAll();
         Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
-        map.put("message",list);
+        if(null!=list) {
+
+            map.put("message", list);
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return map;
     }
 }

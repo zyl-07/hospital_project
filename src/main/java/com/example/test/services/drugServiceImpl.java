@@ -17,8 +17,9 @@ public class drugServiceImpl implements drugService {
     @Resource
     public DrugsMapper drugsMapper;
     @Override
-    public void add(drugs drug) {
+    public int add(drugs drug) {
         this.drugsMapper.insertdrug(drug);
+        return 1;
     }
 
     @Override

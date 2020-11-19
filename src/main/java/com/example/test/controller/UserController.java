@@ -24,17 +24,17 @@ public class UserController {
     @ResponseBody
     public Map<String ,Object>  checkUser( String username,
                                           String password){
+        Map<String,Object> map  = new HashMap<>();
         List<user> list = this.userService.checkUser(username,password);
         for (user user:list) {
             System.out.println(user.getUsername());
         }
         if(this.userService.checkUser(username,password).size()!=0){
-            Map<String,Object> map  = new HashMap<>();
             map.put("resultCode",1);
             return map;
         }
         else{
-            Map<String,Object> map  = new HashMap<>();
+
             map.put("resultCode",-1);
             return map;
         }

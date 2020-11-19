@@ -21,35 +21,54 @@ public class CheckController {
     public Map<String,Object> selectCk(drugsCheck drugsCheck){
         List<drugsCheck> list = this.checkService.selectCk(drugsCheck);
         Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
-        map.put("message",list);
+        if(null!=list) {
+
+            map.put("message", list);
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return map;
     }
 
     @RequestMapping("/deleteCk")
     @ResponseBody
     public Map<String,Object> deleteCk(drugsCheck drugsCheck){
-        this.checkService.deleteCk(drugsCheck);
-        Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
+        Map<String, Object> map = new HashMap<>();
+        if(this.checkService.deleteCk(drugsCheck)==1) {
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return map;
     }
 
     @RequestMapping("/addCk")
     @ResponseBody
     public Map<String,Object> addCk(drugsCheck drugsCheck){
-        this.checkService.addCk(drugsCheck);
-        Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
+        Map<String, Object> map = new HashMap<>();
+        if(this.checkService.addCk(drugsCheck)==1) {
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return map;
     }
     @RequestMapping("/updateCk")
     @ResponseBody
     public Map<String,Object> updateCk(drugsCheck drugsCheck){
-        this.checkService.updateCk(drugsCheck);
-        Map<String,Object> map  = new HashMap<>();
-        map.put("resultCode",1);
+        Map<String, Object> map = new HashMap<>();
+        if(this.checkService.updateCk(drugsCheck)==1) {
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return map;
     }
+
 
 }

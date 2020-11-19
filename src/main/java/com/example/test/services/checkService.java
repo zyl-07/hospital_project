@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface checkService {
     List<drugsCheck> selectCk(drugsCheck drugsCheck);
-    void deleteCk(drugsCheck drugsCheck);
-    void updateCk(drugsCheck drugsCheck);
-    void addCk(drugsCheck drugsCheck);
+    int deleteCk(drugsCheck drugsCheck);
+    int updateCk(drugsCheck drugsCheck);
+    int addCk(drugsCheck drugsCheck);
 }

@@ -38,8 +38,14 @@ public class WareController {
     public Map<String,Object> findAll(){
         List<ware> list = this.wareService.selectAll();
         Map<String,Object> map = new HashMap<>();
-        map.put("resultCode",1);
-        map.put("message",list);
+        if(null!=list) {
+
+            map.put("message", list);
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
         return map;
     }
 }

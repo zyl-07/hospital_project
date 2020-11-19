@@ -6,7 +6,7 @@ import java.util.List;
 
 
 public interface drugService {
-    void add(drugs drug);
+    int add(drugs drug);
     List<drugs> findAll();
     List<drugs> selectdrug(drugs drug);
     void deletedrug(drugs drug);
