@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectdrug" parameterType="drugs" resultType="drugs">
         select dno,dname from drugs where dname = ${dname};
     </select>
-    <delete id="deletedrug" parameterType="drugs" ="true" keyProperty="dno">
+    <delete id="deletedrug" parameterType="drugs" >
         delete from drugs where dno = ${dno};
     </delete>
     <update id="updatedrug" parameterType="drugs">

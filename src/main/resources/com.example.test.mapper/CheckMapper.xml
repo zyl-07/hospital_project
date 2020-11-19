@@ -11,10 +11,10 @@
         update drugs  set dnumber  = #{dpnumber} where dno = #{dno};
     </update>
 <select id="selectCr" parameterType="drugsCheck">
-    select ckno,ckdate,ckoperator,dpnumber,drugs.dno dname,dclassify,dnumber,dunit,dprice from drugs,drugscheck
+    select ckno,ckdate,ckoperator,dpnumber,drugs.dno,dname,dclassify,dnumber,dunit,dprice from drugs,drugscheck
     where drugs.dno = drugscheck.dno and  ckdate  = #{ckdate};
 </select>
-    <delete id="deleteCk" parameterType="drugscheck">
+<delete id="deleteCk" parameterType="drugscheck">
         delete from drugscheck where dno = #{dno};
-    </delete>
+</delete>
 </mapper>
