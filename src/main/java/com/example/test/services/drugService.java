@@ -9,6 +9,6 @@ public interface drugService {
     int add(drugs drug);
     List<drugs> findAll();
     List<drugs> selectdrug(drugs drug);
-    void deletedrug(drugs drug);
-    void updatedrug(drugs drug);
+    int deletedrug(drugs drug);
+    int updatedrug(drugs drug);
 }

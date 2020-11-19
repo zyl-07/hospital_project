@@ -16,10 +16,16 @@ import java.util.List;
 public class drugServiceImpl implements drugService {
     @Resource
     public DrugsMapper drugsMapper;
+
     @Override
     public int add(drugs drug) {
         this.drugsMapper.insertdrug(drug);
-        return 1;
+        if (null != drug.getDno()) {
+            return 1;
+        } else {
+            return -1;
+        }
+
     }
 
     @Override
@@ -33,13 +39,20 @@ public class drugServiceImpl implements drugService {
     }
 
     @Override
-    public void deletedrug(drugs drug) {
-        this.drugsMapper.deletedrug(drug);
+    public int deletedrug(drugs drug) {
+        if (this.drugsMapper.deletedrug(drug) != 0) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     @Override
-    public void updatedrug(drugs drug) {
-        this.drugsMapper.updatedrug(drug);
+    public int updatedrug(drugs drug) {
+        if (this.drugsMapper.updatedrug(drug) != 0) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
-
 }

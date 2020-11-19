@@ -3,8 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.test.mapper.DrugsMapper">
-    <insert id ="insertdrug" parameterType = "drugs">
-        insert into drugs(dno,dname,dclassify,dnumber,dnuit,dprice,jdtime,prodata,duedata) values(#{dno},#{dname},#{dclassify},#{dnumber},#{dunit},#{dprice},#{jdtime},#{prodata},#{duedata});
+    <insert id ="insertdrug" parameterType = "drugs" useGeneratedKeys="true" keyProperty="dno">
+        insert into drugs(dno,dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata) values(#{dno},#{dname},#{dclassify},#{dnumber},#{dunit},#{dprice},#{jdtime},#{prodata},#{duedata});
     </insert>
     <select id="selectAll" resultType="drugs">
         select *from drugs;
@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectdrug" parameterType="drugs" resultType="drugs">
         select dno,dname from drugs where dname = ${dname};
     </select>
-    <delete id="deletedrug" parameterType="drugs">
+    <delete id="deletedrug" parameterType="drugs" ="true" keyProperty="dno">
         delete from drugs where dno = ${dno};
     </delete>
     <update id="updatedrug" parameterType="drugs">

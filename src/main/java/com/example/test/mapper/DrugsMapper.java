@@ -11,6 +11,6 @@ public interface DrugsMapper {
     void insertdrug(drugs drug);
     List<drugs> selectAll();
     List<drugs> selectdrug(drugs drug);
-    void deletedrug(drugs drug);
-    void updatedrug(drugs drug);
+    int deletedrug(drugs drug);
+    int updatedrug(drugs drug);
 }

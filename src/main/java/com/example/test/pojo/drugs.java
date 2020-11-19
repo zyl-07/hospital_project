@@ -39,4 +39,83 @@ public class drugs  {
     @OneToMany(mappedBy = "drugs")
     List<drugsCheck>  drugsChecks   = new ArrayList<>();
 
+    public String getDno() {
+        return dno;
+    }
+
+    public void setDno(String dno) {
+        this.dno = dno;
+    }
+
+    public String getDname() {
+        return dname;
+    }
+
+    public void setDname(String dname) {
+        this.dname = dname;
+    }
+
+    public String getDclassify() {
+        return dclassify;
+    }
+
+    public void setDclassify(String dclassify) {
+        this.dclassify = dclassify;
+    }
+
+    public Integer getDnumber() {
+        return dnumber;
+    }
+
+    public void setDnumber(Integer dnumber) {
+        this.dnumber = dnumber;
+    }
+
+    public String getDunit() {
+        return dunit;
+    }
+
+    public void setDunit(String dunit) {
+        this.dunit = dunit;
+    }
+
+    public float getDprice() {
+        return dprice;
+    }
+
+    public void setDprice(float dprice) {
+        this.dprice = dprice;
+    }
+
+    public String getJdtime() {
+        return jdtime;
+    }
+
+    public void setJdtime(String jdtime) {
+        this.jdtime = jdtime;
+    }
+
+    public String getProdata() {
+        return prodata;
+    }
+
+    public void setProdata(String prodata) {
+        this.prodata = prodata;
+    }
+
+    public String getDuedata() {
+        return duedata;
+    }
+
+    public void setDuedata(String duedata) {
+        this.duedata = duedata;
+    }
+
+    public List<drugsCheck> getDrugsChecks() {
+        return drugsChecks;
+    }
+
+    public void setDrugsChecks(List<drugsCheck> drugsChecks) {
+        this.drugsChecks = drugsChecks;
+    }
 }
