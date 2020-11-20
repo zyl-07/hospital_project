@@ -9,7 +9,7 @@ import javax.persistence.*;
  * 权限表
  */
 @Entity
-@Table(name = "permssion")
+@Table(name = "permission")
 public class permission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

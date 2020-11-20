@@ -1,6 +1,8 @@
 package com.example.test.pojo;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name  = "user")
@@ -17,7 +19,12 @@ public class user {
     String sex;//性别
     String addr;//地址
     String brthday;//出生日期
-
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "user_role"
+            ,joinColumns  = @JoinColumn(name = "rid"),
+            inverseJoinColumns = @JoinColumn(name = "uid")
+    )
+    private List<role> roles = new ArrayList<>();
     public Integer getId() {
         return id;
     }
