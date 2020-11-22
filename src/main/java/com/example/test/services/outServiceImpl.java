@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -26,12 +27,12 @@ public class outServiceImpl implements outService {
     }
 
     @Override
-    public List<out> findAll() {
+    public List<Map<String,Object>> findAll() {
         return this.outRecord.selectAll();
     }
 
     @Override
-    public List<out> selectOr(out out) {
+    public List<Map<String,Object>> selectOr(out out) {
         return this.outRecord.selectOr(out);
     }
 }

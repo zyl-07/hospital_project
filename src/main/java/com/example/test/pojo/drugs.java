@@ -36,9 +36,13 @@ public class drugs  {
   //  @OneToMany(mappedBy = "drugs")
   //  List<out> outs   = new ArrayList<>();
 
-    @OneToMany(mappedBy = "drugs")
-    List<drugsCheck>  drugsChecks   = new ArrayList<>();
-
+//    @OneToMany(mappedBy = "drugs")
+//    List<drugsCheck>  drugsChecks   = new ArrayList<>();
+    @ManyToOne(optional = false,fetch = FetchType.LAZY)
+    @JoinColumn(name="wid")
+    ware ware;
+    @Transient
+    Integer wid;
     public String getDno() {
         return dno;
     }
@@ -111,11 +115,11 @@ public class drugs  {
         this.duedata = duedata;
     }
 
-    public List<drugsCheck> getDrugsChecks() {
-        return drugsChecks;
+    public com.example.test.pojo.ware getWare() {
+        return ware;
     }
 
-    public void setDrugsChecks(List<drugsCheck> drugsChecks) {
-        this.drugsChecks = drugsChecks;
+    public void setWare(com.example.test.pojo.ware ware) {
+        this.ware = ware;
     }
 }

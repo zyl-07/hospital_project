@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 /**
- * @author zyl
+ * @author
  * 药品信息
  */
 @Controller
@@ -49,11 +49,10 @@ public class DrugsController {
     }
     @RequestMapping(value = "/findAll")
     @ResponseBody
-
     //查询所以药品信息
     public Map<String,Object> findAlldrug(){
         Map<String,Object> map = new HashMap<>();
-        List<drugs> list = this.drugService.findAll();
+        List<Map<String,Object>> list = this.drugService.findAll();
        if(null!=list) {
            map.put("resultCode", 1);
            map.put("message", list);

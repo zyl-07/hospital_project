@@ -3,18 +3,37 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.test.mapper.checkMapper">
-<insert id="addcheck" parameterType="drugsCheck">
-    insert into drugscheck(ckno,ckdate,ckoperator,dpnumber,dno) values(#{ckno},#{ckdate},#{ckoperator},#{dpnumber},#{dno})
-</insert>
-    <update id ="updateCk" parameterType="drugsCheck">
-        update drugscheck set ckno =#{ckno},ckdate = #{ckdate},ckoperator = #{ckoperator},dpnumber=#{dpnumber} where dno = #{dno};
+
+<!--    *改-->
+    <insert id=" addcheck" parameterType="java.util.Map" useGeneratedKeys="false">
+        insert into drugscheck
+        (ckdate,ckoperator,dno,dpnumber)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            (
+            #{date},
+            #{item.ckoperator},
+            #{item.dno},
+            #{item.dpnumber}
+            )
+        </foreach>
+    </insert>
+    <update id ="updateCkanddrug" parameterType="drugsCheck">
+        update drugscheck set dpnumber=#{dpnumber} where dno = #{dno} and ckno= #{ckno};
         update drugs  set dnumber  = #{dpnumber} where dno = #{dno};
     </update>
-<select id="selectCr" parameterType="drugsCheck">
+<select id="selectCr" parameterType="drugsCheck" resultType="java.util.Map">
     select ckno,ckdate,ckoperator,dpnumber,drugs.dno,dname,dclassify,dnumber,dunit,dprice from drugs,drugscheck
-    where drugs.dno = drugscheck.dno and  ckdate  = #{ckdate};
+    where drugs.dno = drugscheck.dno and  ckdate  = #{ckdate} and ckno = #{ckno};
 </select>
+<!--    <select id="selectCrofdrug" parameterType="drugsCheck">-->
+<!--    select ckno,ckdate,ckoperator,dpnumber,drugs.dno,dname,dclassify,dnumber,dunit,dprice from drugs,drugscheck-->
+<!--    where drugs.dno = drugscheck.dno and  ckdate  = #{ckdate} and ckno = #{ckno} and wid = (select wid from ware where wname = #{wname});-->
+<!--</select>-->
 <delete id="deleteCk" parameterType="drugscheck">
-        delete from drugscheck where dno = #{dno};
+        delete from drugscheck where dno = #{dno} and ckno = #{ckno} ;
 </delete>
+<select id="newCr" parameterType="drugs" resultType="drugs">
+    select dno,dname,dclassify,dnumber,dunit,dprice from drugs where wid = (select wid from ware where wname = #{wname})
+</select>
 </mapper>

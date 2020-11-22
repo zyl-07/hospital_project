@@ -10,4 +10,13 @@
         insert into user(addr,brthday,email,invite_code,password,phone_number,rname,sex,username)
         values(#{addr},#{brthday},#{email},#{invite_code},#{password},#{phone_number},#{rname},#{sex},#{username});
     </insert>
+    <update id="updateUser" parameterType="user">
+        update users set username = #{username },password = #{password},
+        email = #{email},phone_number = #{phone_number},rname = #{rname},sex = #{sex},addr = #{addr},brthday  = #{brthday}
+        where id  = #{id};
+    </update>
+
+    <select id="selectUser">
+        select * from user where username = #{username};
+    </select>
 </mapper>

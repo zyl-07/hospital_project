@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -26,12 +27,12 @@ public class putServiceImpl implements putService {
     }
 
     @Override
-    public List<put> findAll() {
+    public  List<Map<String,Object>> findAll() {
         return this.enteRecord.selectAll();
     }
 
     @Override
-    public List<put> selectEr(put put) {
+    public List<Map<String,Object>>  selectEr(put put) {
         return this.enteRecord.selectEr(put);
     }
 }

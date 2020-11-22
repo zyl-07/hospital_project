@@ -14,8 +14,22 @@ public class permission {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer pid;//权限id
+    @Column(unique = true)
     String pname;//权限标识
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rid")
-    private role role;
+
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
+
+    public String getPname() {
+        return pname;
+    }
+
+    public void setPname(String pname) {
+        this.pname = pname;
+    }
 }

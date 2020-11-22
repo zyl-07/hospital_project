@@ -31,12 +31,13 @@ public class out {
     String odtype;//出库类型
     String oremark;//备注
     String doperator;//操作员
-    @ManyToOne(cascade = {CascadeType.MERGE},optional = false)
-    @JoinColumn(name = "wid")
-    ware ware;
 
+//    @ManyToOne
+//    @JoinColumn(name="wid")
+//    ware ware;
     @ManyToOne(cascade = {CascadeType.MERGE},optional =false)
     @JoinColumn(name = "dno")
      drugs drug;
-
+    @Transient
+    String dno;
 }

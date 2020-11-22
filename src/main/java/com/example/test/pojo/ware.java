@@ -21,21 +21,21 @@ import java.util.List;
 public class ware {
     @Id//主键
     @GeneratedValue(strategy = GenerationType.IDENTITY)//主键的策略
-    long wid;
+    Integer wid;
     @Column(nullable = false)
     String wname;
 
-    @OneToMany(mappedBy = "ware",cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
-   List<out> out = new ArrayList<>();
-    @OneToMany(mappedBy = "ware",cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
-    List<put> put = new ArrayList<>();
+//    @OneToMany(mappedBy = "ware",cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
+//   List<out> out = new ArrayList<>();
+   // @OneToMany(mappedBy = "ware",cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
+    // List<drugs> drugs = new ArrayList<>();
 
 
     public long getWid() {
         return wid;
     }
 
-    public void setWid(long wid) {
+    public void setWid(int wid) {
         this.wid = wid;
     }
 
@@ -47,19 +47,5 @@ public class ware {
         this.wname = wname;
     }
 
-    public List<com.example.test.pojo.out> getOut() {
-        return out;
-    }
 
-    public void setOut(List<com.example.test.pojo.out> out) {
-        this.out = out;
-    }
-
-    public List<com.example.test.pojo.put> getPut() {
-        return put;
-    }
-
-    public void setPut(List<com.example.test.pojo.put> put) {
-        this.put = put;
-    }
 }

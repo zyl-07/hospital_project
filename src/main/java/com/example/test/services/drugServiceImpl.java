@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Administrator
@@ -29,8 +30,10 @@ public class drugServiceImpl implements drugService {
     }
 
     @Override
-    public List<drugs> findAll() {
-        return this.drugsMapper.selectAll();
+    public List<Map<String,Object>> findAll() {
+
+        List<Map<String,Object>> list  = this.drugsMapper.selectAll();
+        return list;
     }
 
     @Override

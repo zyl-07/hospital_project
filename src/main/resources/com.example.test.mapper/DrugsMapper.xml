@@ -4,13 +4,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.test.mapper.DrugsMapper">
     <insert id ="insertdrug" parameterType = "drugs" useGeneratedKeys="true" keyProperty="dno">
-        insert into drugs(dno,dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata) values(#{dno},#{dname},#{dclassify},#{dnumber},#{dunit},#{dprice},#{jdtime},#{prodata},#{duedata});
+        insert into drugs(dno,dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid) values(#{dno},#{dname},#{dclassify},#{dnumber},#{dunit},#{dprice},#{jdtime},#{prodata},#{duedata},#{wid});
     </insert>
-    <select id="selectAll" resultType="drugs">
-        select *from drugs;
+    <select id="selectAll" resultType="java.util.Map">
+        select * from drugs ;
     </select>
     <select id="selectdrug" parameterType="drugs" resultType="drugs">
-        select dno,dname from drugs where dname = ${dname};
+        select * from drugs where dname = ${dname} and dno = #{dno};
     </select>
     <delete id="deletedrug" parameterType="drugs" >
         delete from drugs where dno = ${dno};

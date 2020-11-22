@@ -9,4 +9,6 @@ import java.util.List;
 public interface userService {
     List<user> checkUser(String username,String password);
     int addUser(user user);
+    int updateUser(user user);
+    user selectUserByusername(String username);
 }

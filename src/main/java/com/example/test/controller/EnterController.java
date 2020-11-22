@@ -38,7 +38,7 @@ public class EnterController {
     @RequestMapping("/selectEr")
     @ResponseBody
     public Map<String,Object>  selectEr(put put){
-        List<put> list = this.putService.selectEr(put);
+        List<Map<String,Object>> list = this.putService.selectEr(put);
         Map<String,Object> map  = new HashMap<>();
         if(null!=list) {
 
@@ -52,8 +52,8 @@ public class EnterController {
     }
     @RequestMapping("/findAll")
     @ResponseBody
-    public Map<String,Object>  findAll(put put){
-        List<put> list = this.putService.findAll();
+    public Map<String,Object>  findAll(){
+        List<Map<String,Object>> list = this.putService.findAll();
         Map<String,Object> map  = new HashMap<>();
         if(null!=list) {
 

@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author zyl
+ * @author
  * 出库接口控制
  */
 @Controller
@@ -37,7 +37,7 @@ public class OutController {
     @RequestMapping("/selectOr")
     @ResponseBody
     public Map<String,Object>  selectOr(out out){
-        List<out> list = this.outService.selectOr(out);
+        List<Map<String,Object>> list = this.outService.selectOr(out);
         Map<String,Object> map  = new HashMap<>();
         if(null!=list) {
 
@@ -52,7 +52,7 @@ public class OutController {
     @RequestMapping("/findAll")
     @ResponseBody
     public Map<String,Object>  findAll(out out){
-        List<out> list = this.outService.findAll();
+        List<Map<String,Object>> list = this.outService.findAll();
         Map<String,Object> map  = new HashMap<>();
         if(null!=list) {
 

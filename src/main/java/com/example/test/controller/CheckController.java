@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author zyl
+ * @author
  * 药品盘存
  */
 @Controller
@@ -24,7 +24,7 @@ public class CheckController {
     @ResponseBody
     //查询
     public Map<String,Object> selectCk(drugsCheck drugsCheck){
-        List<drugsCheck> list = this.checkService.selectCk(drugsCheck);
+        List<Map<String,Object>> list = this.checkService.selectCk(drugsCheck);
         Map<String,Object> map  = new HashMap<>();
         if(null!=list) {
 
@@ -51,19 +51,20 @@ public class CheckController {
         return map;
     }
 
-    @RequestMapping("/addCk")
-    @ResponseBody
+
 
     //添加
-    public Map<String,Object> addCk(drugsCheck drugsCheck){
-        Map<String, Object> map = new HashMap<>();
-        if(this.checkService.addCk(drugsCheck)==1) {
-            map.put("resultCode", 1);
+    @RequestMapping("/addCk")
+    @ResponseBody
+    public Map<String,Object> addCk(Map<String,Object> map){
+        Map<String, Object> maps = new HashMap<>();
+        if(this.checkService.addCk(map)==1) {
+            maps.put("resultCode", 1);
         }
         else{
-            map.put("resultCode", -1);
+            maps.put("resultCode", -1);
         }
-        return map;
+        return maps;
     }
     @RequestMapping("/updateCk")
     @ResponseBody

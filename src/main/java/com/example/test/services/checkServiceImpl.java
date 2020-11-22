@@ -6,13 +6,14 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class checkServiceImpl implements  checkService{
     @Resource
     private checkMapper checkMapper;
     @Override
-    public List<drugsCheck> selectCk(drugsCheck drugsCheck) {
+    public  List<Map<String,Object>> selectCk(drugsCheck drugsCheck) {
         return this.checkMapper.selectCr(drugsCheck);
     }
 
@@ -26,16 +27,15 @@ public class checkServiceImpl implements  checkService{
 
     @Override
     public int updateCk(drugsCheck drugsCheck) {
-        if (this.checkMapper.updateCk(drugsCheck) != 0) {
+        if (this.checkMapper.updateCkanddrug(drugsCheck) != 0) {
             return 1;
         } else {
             return -1;
         }
     }
-
     @Override
-    public int  addCk(drugsCheck drugsCheck) {
-        if (this.checkMapper.addcheck(drugsCheck) != 0) {
+    public int  addCk(Map<String,Object> map) {
+        if (this.checkMapper.addcheck(map) != 0) {
             return 1;
         } else {
             return -1;

@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @author zyl
+ * @author
  * 用户信息
  */
 @Controller
@@ -53,7 +53,20 @@ public class UserController {
             map.put("resultCode",1);
         }
         else{
+            map.put("resultCode",-1);
+
+        }
+        return map;
+    }
+    @RequestMapping("/updateUser")
+    @ResponseBody
+    public Map<String ,Object> updateUser(user user){
+        Map<String,Object> map  = new HashMap<>();
+        if(this.userService.updateUser(user)==1){
             map.put("resultCode",1);
+        }
+        else{
+            map.put("resultCode",-1);
 
         }
         return map;

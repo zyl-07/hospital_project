@@ -3,18 +3,18 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.test.mapper.enteRecord">
-<select id="selectEr" resultType="put" parameterType="put">
+<select id="selectEr" resultType="java.util.Map" parameterType="put">
     select drugs.dno,dname,dunit,idnumber,dclassify,idtime,idtype,iremark,doperator
      from inware,drugs where inware.dno = drugs.dno and drugs.dno = #{dno} and idtime = #{idtime};
 </select>
-<select id="selectAll" resultType="put">
+<select id="selectAll" resultType="java.util.Map">
     select drugs.dno,dname,dunit,idnumber,dclassify,idtime,idtype,iremark,doperator
     from inware,drugs where inware.dno = drugs.dno;
 </select>
-<insert id="addERecord" parameterType="put">
-insert into inware values(#{idnumber},#{idtime}.#{idtype},#{iremark},#{doperator},#{dno},#{wid});
+<insert id="addERecord"  parameterType="java.util.Map">
+insert into inware(idnumber,idtime,idtype,iremark,doperator,dno) values(#{idnumber},#{idtime},#{idtype},#{iremark},#{doperator},#{dno});
 </insert>
-<update id="updateDrug" parameterType="put">
+<update id="updateDrug" parameterType="java.util.Map">
     update drugs set dnumber = dnumber+#{idnumber} where drugs.dno = #{dno};
 </update>
 </mapper>

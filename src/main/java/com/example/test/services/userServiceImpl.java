@@ -26,4 +26,20 @@ public class userServiceImpl implements userService{
             return -1;
         }
     }
+
+    @Override
+    public int updateUser(user user) {
+        if(this.userMapper.updateUser(user)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+
+    @Override
+    public user selectUserByusername(String username) {
+        return this.userMapper.selectUser(username);
+    }
 }
