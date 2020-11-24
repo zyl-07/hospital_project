@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class userServiceImpl implements userService{
@@ -40,6 +41,11 @@ public class userServiceImpl implements userService{
 
     @Override
     public user selectUserByusername(String username) {
-        return this.userMapper.selectUser(username);
+        return this.userMapper.selectUserByusername(username);
+    }
+
+    @Override
+    public user selectUserByUid(String uid) {
+        return this.userMapper.selectUserByUid(uid);
     }
 }

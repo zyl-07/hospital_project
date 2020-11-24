@@ -33,7 +33,7 @@ public class UserController {
        // for (user user:list) {
        //     System.out.println(user.getUsername());
       //  }
-        if(this.userService.checkUser(username,password).size()!=0){
+        if(list.size()!=0){
             map.put("resultCode",1);
             return map;
         }
@@ -64,6 +64,21 @@ public class UserController {
         Map<String,Object> map  = new HashMap<>();
         if(this.userService.updateUser(user)==1){
             map.put("resultCode",1);
+        }
+        else{
+            map.put("resultCode",-1);
+
+        }
+        return map;
+    }
+    @RequestMapping("/selectUserByUid")
+    @ResponseBody
+    public Map<String ,Object> selectUserByUid(String uid){
+        Map<String,Object> map  = new HashMap<>();
+        user user=this.userService.selectUserByUid(uid);
+        if(null!=user){
+            map.put("resultCode",1);
+            map.put("message",user);
         }
         else{
             map.put("resultCode",-1);

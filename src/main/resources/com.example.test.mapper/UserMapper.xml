@@ -16,7 +16,10 @@
         where id  = #{id};
     </update>
 
-    <select id="selectUser">
+    <select id="selectUserByusername" resultType="user">
         select * from user where username = #{username};
+    </select>
+    <select id="selectUserByUid" resultType="user">
+        select * from user where id= #{uid};
     </select>
 </mapper>

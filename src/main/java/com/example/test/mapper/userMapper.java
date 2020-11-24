@@ -5,10 +5,13 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
+
 @Mapper
 public interface userMapper {
     List<user> checkuser(String username,String password);
     int addUser(user user);
     int updateUser(user user);
-    user selectUser(@Param("username") String username);
+    user selectUserByusername(@Param("username") String username);
+    user selectUserByUid(@Param("uid") String uid);
 }
