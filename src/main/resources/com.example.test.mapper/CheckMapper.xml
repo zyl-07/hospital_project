@@ -30,7 +30,7 @@
 </select>
 <!--查询所有盘存记录-->
 <select id="selectAll" resultType="java.util.Map">
-    select * from drugscheck；
+    select * from drugscheck;
 </select>
 
 <!--删除盘存单号-->

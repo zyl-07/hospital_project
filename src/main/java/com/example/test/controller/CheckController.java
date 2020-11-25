@@ -16,7 +16,7 @@ import java.util.Map;
  * 药品盘存
  */
 @Controller
-@RequestMapping("/checkdrugs")
+@RequestMapping("/checkDrugs")
 public class CheckController {
     @Autowired
     private checkService checkService;

@@ -30,19 +30,13 @@ public class UserController {
                                           String password){
         Map<String,Object> map  = new HashMap<>();
         List<user> list = this.userService.checkUser(username,password);
-       // for (user user:list) {
-       //     System.out.println(user.getUsername());
-      //  }
         if(list.size()!=0){
             map.put("resultCode",1);
-            return map;
         }
         else{
-
             map.put("resultCode",-1);
-            return map;
         }
-
+        return map;
     }
 
     @RequestMapping("/addUser")
