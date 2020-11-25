@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.test.mapper.checkMapper">
 
-<!--    *改-->
+<!-- 增加盘存记录-->
     <insert id=" addcheck" parameterType="java.util.Map" useGeneratedKeys="false">
         insert into drugscheck
         (ckdate,ckoperator,dno,dpnumber)
@@ -12,28 +12,33 @@
         <foreach collection="list" item="item" index="index" separator=",">
             (
             #{date},
-            #{item.ckoperator},
+            #{ckoperator},
             #{item.dno},
             #{item.dpnumber}
             )
         </foreach>
     </insert>
+<!--    更新盘存-->
     <update id ="updateCkanddrug" parameterType="drugsCheck">
         update drugscheck set dpnumber=#{dpnumber} where dno = #{dno} and ckno= #{ckno};
         update drugs  set dnumber  = #{dpnumber} where dno = #{dno};
     </update>
+<!--    选择盘存单号-->
 <select id="selectCr" parameterType="drugsCheck" resultType="java.util.Map">
     select ckno,ckdate,ckoperator,dpnumber,drugs.dno,dname,dclassify,dnumber,dunit,dprice from drugs,drugscheck
     where drugs.dno = drugscheck.dno and  ckdate  = #{ckdate} and ckno = #{ckno};
 </select>
-<!--    <select id="selectCrofdrug" parameterType="drugsCheck">-->
-<!--    select ckno,ckdate,ckoperator,dpnumber,drugs.dno,dname,dclassify,dnumber,dunit,dprice from drugs,drugscheck-->
-<!--    where drugs.dno = drugscheck.dno and  ckdate  = #{ckdate} and ckno = #{ckno} and wid = (select wid from ware where wname = #{wname});-->
-<!--</select>-->
+<!--查询所有盘存记录-->
+<select id="selectAll" resultType="java.util.Map">
+    select * from drugscheck；
+</select>
+
+<!--删除盘存单号-->
 <delete id="deleteCk" parameterType="drugscheck">
         delete from drugscheck where dno = #{dno} and ckno = #{ckno} ;
 </delete>
+<!--   进入新增盘点时，获取的药品信息 -->
 <select id="newCr" parameterType="drugs" resultType="drugs">
-    select dno,dname,dclassify,dnumber,dunit,dprice from drugs where wid = (select wid from ware where wname = #{wname})
+    select dno,dname,dclassify,dnumber,dunit,dprice from drugs where wid = #{wid})
 </select>
 </mapper>

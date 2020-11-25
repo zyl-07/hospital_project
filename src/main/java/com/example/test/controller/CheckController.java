@@ -80,6 +80,20 @@ public class CheckController {
         }
         return map;
     }
+//以下增加个获取所有盘点记录/findAll
+@RequestMapping("/findAll")
+@ResponseBody
+public Map<String,Object>findAll(){
+    List<Map<String,Object>> list = this.checkService.selectAllCk();
+    Map<String,Object> map  = new HashMap<>();
+    if(null!=list) {
 
-
+        map.put("message", list);
+        map.put("resultCode", 1);
+    }
+    else{
+        map.put("resultCode", -1);
+    }
+    return map;
+}
 }

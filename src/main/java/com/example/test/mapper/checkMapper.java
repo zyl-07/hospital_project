@@ -11,7 +11,7 @@ import java.util.Map;
 public interface checkMapper {
     int addcheck(Map<String,Object> map);
     List<Map<String,Object>> selectCr(drugsCheck drugsCheck);
-   // List<drugsCheck> selectCrofdrug(drugsCheck drugsCheck);
+    List<Map<String,Object>> selectAll();
     int updateCkanddrug(drugsCheck drugsCheck);
     int deleteCk(drugsCheck drugsCheck);
     List<drugs> newCr(drugs drugs);

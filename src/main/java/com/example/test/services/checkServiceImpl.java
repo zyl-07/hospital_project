@@ -41,4 +41,8 @@ public class checkServiceImpl implements  checkService{
             return -1;
         }
     }
+    @Override
+    public  List<Map<String,Object>> selectAllCk() {
+       return this.checkMapper.selectAll();
+    }
 }

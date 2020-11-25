@@ -10,4 +10,5 @@ public interface checkService {
     int deleteCk(drugsCheck drugsCheck);
     int updateCk(drugsCheck drugsCheck);
     int addCk(Map<String,Object> map);
+    List<Map<String,Object>> selectAllCk();
 }

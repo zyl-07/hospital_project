@@ -8,7 +8,7 @@
      from outware,drugs where outware.dno = drugs.dno and drugs.dno = #{dno} and odtime = #{odtime};
 </select>
  <insert id="addORecord" parameterType="out">
-    insert into outware values(#{odnumber},#{odtime}.#{odtype},#{oremark},#{doperator},#{dno});
+    insert into outware values(#{odnumber},#{odtime},#{odtype},#{oremark},#{doperator},#{dno});
 </insert>
     <select id="selectAll" resultType="java.util.Map">
     select drugs.dno,dname,dunit,odnumber,dclassify,odtime,odtype,oremark,doperator

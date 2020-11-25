@@ -49,7 +49,7 @@ public class DrugsController {
     }
     @RequestMapping(value = "/findAll")
     @ResponseBody
-    //查询所以药品信息
+    //查询所有药品信息
     public Map<String,Object> findAlldrug(){
         Map<String,Object> map = new HashMap<>();
         List<Map<String,Object>> list = this.drugService.findAll();
