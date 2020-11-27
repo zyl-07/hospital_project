@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+
 /*
 *自定义Realm
  */
@@ -33,17 +35,35 @@ public class CustomRealm extends AuthorizingRealm {
          List<String> stringRoleList = new ArrayList<>();
          List<String> stringPermissionList = new ArrayList<>();
 
-         List<role> rolelist = user.getRoles();
-         for(role role:rolelist){
-             stringRoleList.add(role.getRname());
-             List<permission> permissionlist = role.getPermissions();
-             for(permission p:permissionlist)
-             {
-                 if(p!=null){
-                     stringPermissionList.add(p.getPname());
+         List<Map<String,Object>> rolelist =this.limitService.selectAllroleByUid(user.getId().toString());
+         for(int i=0;i< rolelist.size();i++){
+             Map<String, Object> userRole = rolelist.get(i);
+             role role = this.limitService.selectRoleByrid( userRole.get("rid").toString());
+             if(role!=null) {
+                 stringRoleList.add(role.getRname());
              }
+             List<Map<String,Object>> rolePermissions = this.limitService.selectAllperByrid(role.getRid().toString());
+             for(int j=0;j<rolePermissions.size();j++){
+                 Map<String, Object> rolepermission =rolePermissions.get(j);
+                 permission permission  = this.limitService.selectPerBypid(rolepermission.get("pid").toString());
+                if(permission!=null) {
+                    stringPermissionList.add(permission.getPname());
+                }
              }
          }
+             System.out.println(stringRoleList.toString());
+
+//         for(Map<String,Object> role:rolelist){
+//             stringRoleList.add(role.getRname());
+//             System.out.println(role.getRname());
+//             List<permission> permissionlist = role.getPermissions();
+//             for(permission p:permissionlist)
+//             {
+//                 if(p!=null){
+//                     stringPermissionList.add(p.getPname());
+//                 }
+//             }
+//         }
 
          SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
          simpleAuthorizationInfo.addRoles(stringRoleList);

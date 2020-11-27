@@ -34,9 +34,9 @@ public class ShiroConfig {
         //登录用户才可以访问
         filterChainDefinitmap.put("/drugs/**","authc");
         //管理员角色才可以
-        filterChainDefinitmap.put("/drugs/adddrug","roles[admin]");
+        filterChainDefinitmap.put("/drugs/findAll","perms[admin]");
         //有编辑权限的才可以访问
-        filterChainDefinitmap.put("/drugs/update","perms[drugs_update]");
+        filterChainDefinitmap.put("/drugs/adddrug","perms[查看药品信息]");
         //全局的,
         //过滤链是顺序执行的，从上到下
         //authc:url需要通过认证才可以访问
@@ -59,7 +59,7 @@ public class ShiroConfig {
      //自定义realm
     public CustomRealm customRealm(){
         CustomRealm  customRealm = new CustomRealm();
-        //customRealm.setCredentialsMatcher(hashedCredentialsMatcher());
+        customRealm.setCredentialsMatcher(hashedCredentialsMatcher());
         return customRealm;
      }
      //密码加密规则

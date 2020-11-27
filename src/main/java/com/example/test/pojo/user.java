@@ -1,5 +1,7 @@
 package com.example.test.pojo;
 
+import org.apache.ibatis.annotations.Select;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -105,7 +107,6 @@ public class user {
     public void setBrthday(String brthday) {
         this.brthday = brthday;
     }
-
     public List<role> getRoles() {
         return roles;
     }

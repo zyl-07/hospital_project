@@ -29,12 +29,4 @@ public class ShiroController {
         map.put("code",-2);
         return map;
     }
-    @RequestMapping("/index")
-    @ResponseBody
-    public Map<String,Object> index(){
-        Map<String,Object> map = new HashMap<>();
-        map.put("data","提示：ok");
-        map.put("code",1);
-        return map;
-    }
 }
