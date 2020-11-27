@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.test.mapper.limitMapper">
+<!--    对role-->
+<insert id="addRole" parameterType="role">
+    insert into role(rname) values(#{rname});
+</insert>
+<delete id="deleteRole" parameterType="role">
+    delete from role where rname = #{rname};
+</delete>
+ <select id="selectAllOfrole" parameterType="role" resultType="role">
+     select * from role;
+ </select>
+    <select id="selectRoleByrid"  resultType="role">
+     select * from role where rid = #{rid};
+ </select>
+<!--   对permission -->
+  <insert id="addPer" parameterType="permission">
+    insert into permission(pname) values(#{pname});
+</insert>
+<delete id="deletePer" parameterType="permission">
+    delete from permission where pname = #{pname};
+</delete>
+    <select id="selectAllOfper" parameterType="permission" resultType="permission">
+     select * from permission;
+ </select>
+    <select id="selectPidByPname" resultType="permission">
+        select pid from permission where pname = #{pname};
+    </select>
+    <select id="selectPerBypid" resultType="permission">
+        select * from permission where pid = #{pid};
+    </select>
+
+<!--   对user_role -->
+    <select id="selectAllroleByUid" resultType="java.util.Map">
+        select * from user_role where uid = #{uid};
+    </select>
+    <select id="selectAllUserRole" resultType="java.util.Map">
+        select user_role.uid,user_role.rid,user.username,role.rname from user,role,user_role where user_role.uid = user.id and user_role.rid = role.rid;
+    </select>
+    <insert id="addUR">
+        insert into user_role(uid,rid) values(#{param1},#{param2});
+    </insert>
+    <delete id="delteUR">
+        delete from user_role where uid  = #{param1} and rid  =#{param2};
+    </delete>
+
+
+<!--  对role_permission  -->
+    <select id="selectAllperByrid" resultType="java.util.Map">
+        select * from role_permissions where rid = #{rid};
+    </select>
+    <insert id="addRp">
+        insert into role_permissions (rid,pid) values(#{param1},#{param2});
+    </insert>
+    <delete id="delteRp">
+        delete from role_permissions  where rid  = #{param1} and uid  =#{param2};
+    </delete>
+
+
+
+<!--    三者left join 返回某用户所有的信息-->
+    <select id="selectUserRolePermission" resultType="java.util.Map">
+        select * from user u left join user_role ur on u.id = ur.uid
+        left join role r on ur.rid = r.rid
+        left join role_permissions rp on r.rid  = rp.rid
+        left join permission p on rp.pid = p.pid
+        where u.id = #{uid};
+    </select>
+</mapper>
