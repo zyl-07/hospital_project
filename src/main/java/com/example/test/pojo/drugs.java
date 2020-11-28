@@ -1,15 +1,12 @@
 package com.example.test.pojo;
 
 
-import com.sun.istack.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import javax.persistence.*;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 @Data
 @NoArgsConstructor//无参构造函数
 @AllArgsConstructor //全参构造

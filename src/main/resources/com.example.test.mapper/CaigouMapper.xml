@@ -8,7 +8,7 @@
 <!--     from caigou where caigou.dno = drugs.dno and drugs.dno = #{dno} and cgtime = #{cgtime};-->
 <!--</select>-->
 <!--    采购详情-->
-    <select id="findcaigou" resultType="caigou">
+    <select id="findcaigou" resultType="java.util.Map">
         select cgdno,cgtime,drug.dno,drugs.dprice,dname,ypnumber,dunit,dclassify,wid,caigou_beizhu,caozuoyuan
         from caigou , drugs
         where cgdno = #{cgdno} and drugs.dno = caigou.dno;
@@ -20,15 +20,15 @@
         where cgdno = #{cgdno} or cgtime = #{cgtime} ;
     </select>
 <!--    采购订单-->
-    <select id="findcaigoudingdan" resultType="caigou">
+    <select id="findcaigoudingdan" resultType="java.util.Map">
         select cgdno,cgtime,caigou_jiaohuoren,caigou_yanshouren,caigou_jizhangren,caigou_beizhu
         from caigou;
     </select>
 <!--    添加采购信息-->
     <insert id="addERecord" parameterType="caigou">
-        insert into caigou(cgdno,cgtime,dname,ypnumber,dunit,dclassify,wid,
+        insert into caigou(cgdno,cgtime,dname,ypnumber,dunit,dclassify,dno,
         caigou_beizhu,caozuoyuan,caigou_jiaohuoren,caigou_yanshouren,caigou_jizhangren)
-        values(#{cgdno},#{cgtime},#{dname},#{ypnumber},#{dunit},#{dclassify},#{wid},#{caigou_beizhu}
+        values(#{cgdno},#{cgtime},#{dname},#{ypnumber},#{dunit},#{dclassify},#{dno},#{caigou_beizhu}
         #{caozuoyuan},#{caigou_jiaohuoren},#{caigou_yanshouren},#{caigou_jizhangren});
     </insert>
 <!--    修改采购订单-->

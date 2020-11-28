@@ -26,10 +26,14 @@ public class caigou {
     String caigou_jiaohuoren ;//交货人
     String caigou_yanshouren ;//验收人
     String caigou_jizhangren ;//记账人
+    @Transient
     String dname ;
-    String dunit ;
-    String dclassify ;
-   // String dno ;
+    @Transient
+   String dunit ;
+    @Transient
+   String dclassify ;
+    @Transient
+    String dno ;
     @ManyToOne(cascade = {CascadeType.MERGE},optional =false)
     @JoinColumn(name = "dno" )
     drugs drugs ;

@@ -58,6 +58,7 @@ public class caigouServiceImpl implements caigouService {
 
     }
 //    删除
+    @Override
     public int deletecaigou(caigou caigou){
         if (this.caigouRecord.deletecaigou(caigou)!=0){
             return 1;
