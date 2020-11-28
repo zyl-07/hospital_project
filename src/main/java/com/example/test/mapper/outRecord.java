@@ -12,5 +12,7 @@ public interface outRecord {
     List<Map<String,Object>> selectAll();
     int addORecord(out out);
     int updateDrug(out out);
+    int deleteOr(out out);
     List<Map<String,Object>> selectOr(out out);
+    int updateOR(out out);
 }

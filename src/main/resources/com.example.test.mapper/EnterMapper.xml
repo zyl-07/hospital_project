@@ -8,13 +8,21 @@
      from inware,drugs where inware.dno = drugs.dno and drugs.dno = #{dno} and idtime = #{idtime};
 </select>
 <select id="selectAll" resultType="java.util.Map">
-    select drugs.dno,dname,dunit,idnumber,dclassify,idtime,idtype,iremark,doperator
+    select id,drugs.dno,dname,dunit,idnumber,dclassify,idtime,idtype,iremark,doperator
     from inware,drugs where inware.dno = drugs.dno;
 </select>
 <insert id="addERecord"  parameterType="java.util.Map">
 insert into inware(idnumber,idtime,idtype,iremark,doperator,dno) values(#{idnumber},#{idtime},#{idtype},#{iremark},#{doperator},#{dno});
 </insert>
+<!--   添加入库记录后，更新药品信息-->
 <update id="updateDrug" parameterType="java.util.Map">
     update drugs set dnumber = dnumber+#{idnumber} where drugs.dno = #{dno};
+</update>
+    <delete id="deleteEr" parameterType="put">
+        delete from inware where id = #{id};
+    </delete>
+<!--    更改入库记录-->
+<update id="updateER" parameterType="java.util.Map">
+    update inware set idnumber=#{idnumber},idtype=#{idtype},iremark=#{iremark},doperator=#{doperator} where dno = #{dno} and idtime = #{idtime};
 </update>
 </mapper>

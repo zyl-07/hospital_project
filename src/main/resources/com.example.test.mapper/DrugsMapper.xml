@@ -4,10 +4,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.test.mapper.DrugsMapper">
     <insert id ="insertdrug" parameterType = "drugs" useGeneratedKeys="true" keyProperty="dno">
-        insert into drugs(dno,dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid) values(#{dno},#{dname},#{dclassify},#{dnumber},#{dunit},#{dprice},#{jdtime},#{prodata},#{duedata},#{wid});
+        insert into drugs(dno,dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid,remark) values(#{dno},#{dname},#{dclassify},#{dnumber},#{dunit},#{dprice},#{jdtime},#{prodata},#{duedata},#{wid},#{remark});
     </insert>
     <select id="selectAll" resultType="java.util.Map">
-        select * from drugs ;
+        select * from drugs left join ware on drugs.wid = ware.wid;
     </select>
     <select id="selectdrug" parameterType="drugs" resultType="drugs">
         select * from drugs where dname = ${dname} and dno = #{dno};
@@ -17,6 +17,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </delete>
     <update id="updatedrug" parameterType="drugs">
         update drugs set dname = #{dname},dclassify = #{dclassify},dnumber = #{dnumber},dprice = #{dprice},dunit = #{dunit},
-         jdtime = #{jdtime},prodata = #{prodata},duedata = #{duedata} where dno = ${dno};
+         jdtime = #{jdtime},prodata = #{prodata},duedata = #{duedata},wid = #{wid},remark = #{remark} where dno = ${dno};
     </update>
 </mapper>

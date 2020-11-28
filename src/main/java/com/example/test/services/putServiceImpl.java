@@ -17,7 +17,7 @@ public class putServiceImpl implements putService {
     @Override
     public int addEr(put put) {
         if (this.enteRecord.addERecord(put)!=0&&
-        this.enteRecord.updateDrug(put)!=0)
+            this.enteRecord.updateDrug(put)!=0)
         {
             return 1;
         }
@@ -34,5 +34,28 @@ public class putServiceImpl implements putService {
     @Override
     public List<Map<String,Object>>  selectEr(put put) {
         return this.enteRecord.selectEr(put);
+    }
+
+    @Override
+    public int updateEr(put put) {
+        if (this.enteRecord.updateER(put)!=0&&
+                this.enteRecord.updateDrug(put)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+
+    @Override
+    public int deleteEr(put put) {
+        if (this.enteRecord.deleteEr(put)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
     }
 }

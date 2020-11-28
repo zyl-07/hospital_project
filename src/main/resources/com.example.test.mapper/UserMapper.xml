@@ -22,4 +22,8 @@
     <select id="selectUserByUid" resultType="user">
         select * from user where id= #{uid};
     </select>
+
+    <select id="selectAllUser" resultType="java.util.Map">
+        select * from user;
+    </select>
 </mapper>

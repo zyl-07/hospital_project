@@ -31,17 +31,19 @@ public class ShiroConfig {
         filterChainDefinitmap.put("/logout","logout");
         //匿名可以访问的，游客模式
         filterChainDefinitmap.put("/admin/**","anon");
+        filterChainDefinitmap.put("/**","anon");
         //登录用户才可以访问
-        filterChainDefinitmap.put("/drugs/**","authc");
-        //管理员角色才可以
-        filterChainDefinitmap.put("/drugs/findAll","perms[admin]");
-        //有编辑权限的才可以访问
-        filterChainDefinitmap.put("/drugs/adddrug","perms[查看药品信息]");
+//        filterChainDefinitmap.put("/drugs/**","authc");
+//        filterChainDefinitmap.put("/limit/**","authc");
+//        //管理员角色才可以
+//        filterChainDefinitmap.put("/drugs/findAll","perms[admin]");
+//        //有编辑权限的才可以访问
+//        filterChainDefinitmap.put("/drugs/adddrug","perms[查看药品信息]");
         //全局的,
         //过滤链是顺序执行的，从上到下
         //authc:url需要通过认证才可以访问
         //anon:url可以匿名访问
-        filterChainDefinitmap.put("/**","authc");
+        //filterChainDefinitmap.put("/**","authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitmap);
         return shiroFilterFactoryBean;
 

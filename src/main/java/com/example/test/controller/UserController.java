@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -23,6 +24,8 @@ import java.util.Map;
 public class UserController {
     @Autowired
     private userService userService;
+
+//   用户登录
     @RequestMapping("/login")
     @ResponseBody
     public Map<String ,Object>  checkUser( String username,
@@ -47,7 +50,7 @@ public class UserController {
         }
         return map;
     }
-
+//增加用户
     @RequestMapping("/addUser")
     @ResponseBody
     public Map<String ,Object> addUser(user user){
@@ -61,6 +64,7 @@ public class UserController {
         }
         return map;
     }
+//    更新用户信息
     @RequestMapping("/updateUser")
     @ResponseBody
     public Map<String ,Object> updateUser(user user){
@@ -74,6 +78,7 @@ public class UserController {
         }
         return map;
     }
+//    选取用户通过uid
     @RequestMapping("/selectUserByUid")
     @ResponseBody
     public Map<String ,Object> selectUserByUid(String uid){
@@ -88,5 +93,20 @@ public class UserController {
 
         }
         return map;
+    }
+//   选取所有用户信息
+    @RequestMapping("/selectAllUser")
+    @ResponseBody
+    public Map<String ,Object> selectAllUser(){
+        Map<String,Object> map  = new HashMap<>();
+        List<Map<String,Object>> list=this.userService.selectAllUser();
+        if(null!=list) {
+            map.put("resultCode", 1);
+            map.put("message", list);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
+        return  map;
     }
 }

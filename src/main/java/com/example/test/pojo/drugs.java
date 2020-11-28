@@ -26,6 +26,7 @@ public class drugs  {
     String jdtime;//进货日期
     String prodata ;//生产日期
     String duedata ;//有效期
+    String remark;
     //我们在上面的代码中给了Student对Course进行级联保存
 // （cascade=CascadeType.PERSIST）的权限。
 // 此时，若Student实体持有的Course实体在数据库中不存在时，保存该Student时，

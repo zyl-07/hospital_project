@@ -14,4 +14,5 @@ public interface userMapper {
     int updateUser(user user);
     user selectUserByusername(@Param("username") String username);
     user selectUserByUid(@Param("uid") String uid);
+    List<Map<String,Object>> selectAllUser();
 }

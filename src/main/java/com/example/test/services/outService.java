@@ -10,4 +10,6 @@ public interface outService {
     int addOr(out out);
     List<Map<String,Object>> findAll();
     List<Map<String,Object>> selectOr(out out);
+    int updateOr(out out);
+    int deleteOr(out out);
 }

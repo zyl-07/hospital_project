@@ -35,4 +35,26 @@ public class outServiceImpl implements outService {
     public List<Map<String,Object>> selectOr(out out) {
         return this.outRecord.selectOr(out);
     }
+
+    @Override
+    public int updateOr(out out) {
+        if (this.outRecord.updateOR(out)!=0&&
+                this.outRecord.updateDrug(out)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+    @Override
+    public int deleteOr(out out) {
+        if (this.outRecord.deleteOr(out)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
 }

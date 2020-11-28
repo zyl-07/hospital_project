@@ -13,4 +13,5 @@ public interface userService {
     int updateUser(user user);
     user selectUserByusername(String username);
     user selectUserByUid(String uid);
+    List<Map<String,Object>> selectAllUser();
 }

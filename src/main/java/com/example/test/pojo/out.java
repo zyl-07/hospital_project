@@ -27,7 +27,7 @@ public class out {
 //    String dunit;//规格&单位
     Integer odnumber;//出库数量
 //    String dclassify ;//分类
-    LocalDateTime odtime;//出库时间
+    String odtime;//出库时间
     String odtype;//出库类型
     String oremark;//备注
     String doperator;//操作员
@@ -40,4 +40,69 @@ public class out {
      drugs drug;
     @Transient
     String dno;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getOdnumber() {
+        return odnumber;
+    }
+
+    public void setOdnumber(Integer odnumber) {
+        this.odnumber = odnumber;
+    }
+
+
+    public String getOdtype() {
+        return odtype;
+    }
+
+    public void setOdtype(String odtype) {
+        this.odtype = odtype;
+    }
+
+    public String getOremark() {
+        return oremark;
+    }
+
+    public void setOremark(String oremark) {
+        this.oremark = oremark;
+    }
+
+    public String getDoperator() {
+        return doperator;
+    }
+
+    public void setDoperator(String doperator) {
+        this.doperator = doperator;
+    }
+
+    public drugs getDrug() {
+        return drug;
+    }
+
+    public void setDrug(drugs drug) {
+        this.drug = drug;
+    }
+
+    public String getDno() {
+        return dno;
+    }
+
+    public void setDno(String dno) {
+        this.dno = dno;
+    }
+
+    public String getOdtime() {
+        return odtime;
+    }
+
+    public void setOdtime(String odtime) {
+        this.odtime = odtime;
+    }
 }
