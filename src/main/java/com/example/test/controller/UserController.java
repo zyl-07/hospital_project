@@ -33,14 +33,13 @@ public class UserController {
         try{
             UsernamePasswordToken usernamePasswordToken = new UsernamePasswordToken(username,password);
             subject.login(usernamePasswordToken);
+            System.out.println("有角色："+subject.hasRole("admin"));
+            System.out.println("有权限："+subject.isPermitted("查看药品信息"));
+
             map.put("resultCode",1);
             map.put("message","登录成功");
             map.put("session_id",subject.getSession().getId());
         }
-       // List<user> list = this.userService.checkUser(username,password);
-//        if(list.size()!=0){
-//
-//        }
         catch (Exception e){
             e.printStackTrace();
             map.put("resultCode",-1);
