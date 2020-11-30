@@ -26,16 +26,15 @@
     </select>
 <!--    添加采购信息-->
     <insert id="addERecord" parameterType="caigou">
-        insert into caigou(cgdno,cgtime,dname,ypnumber,dunit,dclassify,dno,
+        insert into caigou(cgdno,cgtime,ypnumber,dno,
         caigou_beizhu,caozuoyuan,caigou_jiaohuoren,caigou_yanshouren,caigou_jizhangren)
-        values(#{cgdno},#{cgtime},#{dname},#{ypnumber},#{dunit},#{dclassify},#{dno},#{caigou_beizhu}
+        values(#{cgdno},#{cgtime},#{ypnumber},#{dno},#{caigou_beizhu},
         #{caozuoyuan},#{caigou_jiaohuoren},#{caigou_yanshouren},#{caigou_jizhangren});
     </insert>
 <!--    修改采购订单-->
     <update id="updatecaigou" parameterType = "caigou">
         update caigou
-        set cgtime=#{cgtime},cgdname=#{dname},ypnumber=#{ypnumber},dunit=#{dunit},
-        dclassify=#{dclassify},wid=#{wid},caigou_beizhu#{caigou_beizhu},
+        set cgtime=#{cgtime},ypnumber=#{ypnumber},caigou_beizhu#{caigou_beizhu},
         caozuoyuan=#{caozuoyuan},caigou_jiaohuoren=#{caigou_jiaohuoren},
         caigou_yanshouren=#{caigou_yanshouren},caigou_jizhangren=#{caigou_jizhangren}
         where cgdno = #{cgdno};
@@ -44,4 +43,8 @@
     <delete id="deletecaigou" parameterType="caigou">
         delete from caigou where cgdno = #{cgdno}
     </delete>
+
+    <select id="selectAll" resultType="java.util.Map">
+        select caigou.*,drugs.dname from caigou,drugs where drugs.dno = caigou.dno;
+    </select>
 </mapper>

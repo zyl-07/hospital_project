@@ -29,7 +29,7 @@ public interface limitService {
     List<Map<String, Object>> selectAllroleByUid( String uid);
     List<Map<String, Object>> selectAllUserRole();
     int addUR(String uid, String rid);
-
+    int updateUR(String uid,String rid);
     int delteUR(String uid, String rid);
 
     //对角色权限表

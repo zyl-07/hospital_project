@@ -19,17 +19,16 @@ public class CaigouController {
 
     @Autowired
     private caigouService caigouService;
-//    填写采购订单
+
+    //    填写采购订单
     @RequestMapping("/addcaigou")
     @ResponseBody
-    public Map<String ,Object> addcaigou(caigou caigou){
-        Map<String,Object> map = new HashMap<>();
-        if(this.caigouService.addcaigou(caigou)==1)
-        {
-            map.put("resultCode",1);
-        }
-        else{
-            map.put("resultCode",-1);
+    public Map<String, Object> addcaigou(caigou caigou) {
+        Map<String, Object> map = new HashMap<>();
+        if (this.caigouService.addcaigou(caigou) == 1) {
+            map.put("resultCode", 1);
+        } else {
+            map.put("resultCode", -1);
         }
         return map;
     }
@@ -37,15 +36,14 @@ public class CaigouController {
     //    查看采购订单详细信息
     @RequestMapping("/findcaigou")
     @ResponseBody
-    public Map<String,Object>  findcaigou(caigou caigou){
+    public Map<String, Object> findcaigou(caigou caigou) {
         List<Map<String, Object>> list = this.caigouService.findcaigou();
-        Map<String,Object> map  = new HashMap<>();
-        if(null!=list) {
+        Map<String, Object> map = new HashMap<>();
+        if (null != list) {
 
             map.put("message", list);
             map.put("resultCode", 1);
-        }
-        else{
+        } else {
             map.put("resultCode", -1);
         }
         return map;
@@ -54,15 +52,14 @@ public class CaigouController {
     //    查看采购订单信息
     @RequestMapping("/findcaigoudingdan")
     @ResponseBody
-    public Map<String,Object>  findcaigoudingdan(caigou caigou){
+    public Map<String, Object> findcaigoudingdan(caigou caigou) {
         List<Map<String, Object>> list = this.caigouService.findcaigoudingdan();
-        Map<String,Object> map  = new HashMap<>();
-        if(null!=list) {
+        Map<String, Object> map = new HashMap<>();
+        if (null != list) {
 
             map.put("message", list);
             map.put("resultCode", 1);
-        }
-        else{
+        } else {
             map.put("resultCode", -1);
         }
         return map;
@@ -71,28 +68,27 @@ public class CaigouController {
     //按条件查询（采购单号/时间）
     @RequestMapping(value = "/select")
     @ResponseBody
-    public Map<String,Object> selectdrug(caigou caigou){
-        Map<String,Object> map = new HashMap<>();
+    public Map<String, Object> selectdrug(caigou caigou) {
+        Map<String, Object> map = new HashMap<>();
         List<caigou> list = this.caigouService.select(caigou);
-        if(null!=list) {
+        if (null != list) {
             map.put("resultCode", 1);
             map.put("message", list);
-        }
-        else{
+        } else {
             map.put("resultCode", -1);
         }
-        return  map;
+        return map;
     }
+
     //删除采购订单信息
     @RequestMapping("/deletecaigou")
-    public Map<String,Object>deletecaigou(caigou caigou){
-        Map<String,Object> map = new HashMap<>();
-        if(this.caigouService.deletecaigou(caigou)==1)
-        {
-            map.put("resultCode",1);
-        }
-        else{
-            map.put("resultCode",-1);
+    @ResponseBody
+    public Map<String, Object> deletecaigou(caigou caigou) {
+        Map<String, Object> map = new HashMap<>();
+        if (this.caigouService.deletecaigou(caigou) == 1) {
+            map.put("resultCode", 1);
+        } else {
+            map.put("resultCode", -1);
         }
         return map;
     }
@@ -101,14 +97,29 @@ public class CaigouController {
     @ResponseBody
 
     //修改采购订单信息
-    public Map<String,Object>updatecaigou(caigou caigou){
-        Map<String,Object> map = new HashMap<>();
-        if(this.caigouService.updatecaigou(caigou)==1)
-        {
-            map.put("resultCode",1);
+    public Map<String, Object> updatecaigou(caigou caigou) {
+        Map<String, Object> map = new HashMap<>();
+        if (this.caigouService.updatecaigou(caigou) == 1) {
+            map.put("resultCode", 1);
+        } else {
+            map.put("resultCode", -1);
         }
-        else{
-            map.put("resultCode",-1);
+        return map;
+    }
+
+
+    @RequestMapping("/findAll")
+    @ResponseBody
+
+    //返回所有采购信息
+    public Map<String, Object> finAll() {
+        Map<String, Object> map = new HashMap<>();
+        List<caigou> list = this.caigouService.findAll();
+        if (null != list) {
+            map.put("resultCode", 1);
+            map.put("message", list);
+        } else {
+            map.put("resultCode", -1);
         }
         return map;
     }

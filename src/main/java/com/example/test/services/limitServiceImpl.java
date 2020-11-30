@@ -90,7 +90,16 @@ public class limitServiceImpl implements  limitService{
         else
         {   return -1;}
     }
-//删除用户角色表信息，通过uid,rid
+
+    @Override
+    public int updateUR(String uid, String rid) {
+        if(this.limitMapper.updateUR(uid, rid)!=0)
+        {   return 1;}
+        else
+        {   return -1;}
+    }
+
+    //删除用户角色表信息，通过uid,rid
     @Override
     public int delteUR(String uid, String rid) {
         if(this.limitMapper.delteUR(uid, rid)!=0)

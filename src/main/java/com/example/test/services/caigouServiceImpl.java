@@ -32,12 +32,20 @@ public class caigouServiceImpl implements caigouService {
     public List<caigou> select(caigou caigou) {
         return this.caigouRecord.select(caigou);
     }
-//    查看采购订单详细信息
+
+    @Override
+    public List<caigou> findAll() {
+        return this.caigouRecord.selectAll();
+    }
+
+    //    查看采购订单详细信息
     @Override
     public List<Map<String, Object>> findcaigou() {
         List<Map<String,Object>> list  = this.caigouRecord.findcaigou();
         return list;
     }
+
+
 //    采购订单
 
     @Override

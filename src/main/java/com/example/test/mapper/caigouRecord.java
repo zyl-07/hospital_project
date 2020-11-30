@@ -21,4 +21,5 @@ public interface caigouRecord {
 
     List<caigou> select(caigou caigou);
 //    List<caigou> selectEr(caigou caigou);
+    List<caigou> selectAll();
 }

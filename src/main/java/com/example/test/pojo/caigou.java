@@ -20,7 +20,7 @@ public class caigou {
     Integer id ;//编号
     String cgdno ;//采购单号
     Integer ypnumber ;//药品数量
-    LocalDateTime cgtime;//采购时间
+    String cgtime;//采购时间
     String caozuoyuan ;//操作员
     String caigou_beizhu ;//备注
     String caigou_jiaohuoren ;//交货人

@@ -24,6 +24,7 @@ public interface limitMapper {
     List<Map<String,Object>> selectAllroleByUid(@Param("uid") String uid);
     List<Map<String,Object>> selectAllUserRole();
     int addUR(String uid,String rid);
+    int updateUR(String uid,String rid);
     int delteUR(String uid,String rid);
     //对角色权限表
     List<Map<String,Object>> selectAllperByrid(@Param("rid") String rid);

@@ -43,6 +43,10 @@
     <insert id="addUR">
         insert into user_role(uid,rid) values(#{param1},#{param2});
     </insert>
+
+    <update id="updateUR" >
+        update user_role set rid = #{param2} where uid = #{param1};
+    </update>
     <delete id="delteUR">
         delete from user_role where uid  = #{param1} and rid  =#{param2};
     </delete>

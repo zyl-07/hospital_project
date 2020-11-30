@@ -16,5 +16,7 @@ public interface caigouService {
     int deletecaigou(caigou caigou);
 
     List<caigou> select(caigou caigou);
+
+    List<caigou> findAll();
     // List<caigou> selectEr(caigou caigou);
 }

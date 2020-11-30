@@ -173,4 +173,17 @@ public Map<String,Object>  selectAllUserRole(){
         }
         return  map;
     }
+    @RequestMapping("/updateUr")
+    @ResponseBody
+//    更改用户角色(通过uid,rid)
+    public Map<String,Object>  updateUr(String uid,String rid){
+        Map<String,Object> map = new HashMap<>();
+        if(this.limitService.updateUR(uid,rid)==1) {
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
+        return  map;
+    }
  }
