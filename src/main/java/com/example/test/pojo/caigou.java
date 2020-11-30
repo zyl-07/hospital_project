@@ -29,7 +29,7 @@ public class caigou {
     @Transient
     String dname ;
     @Transient
-   String dunit ;
+     String dunit ;
     @Transient
    String dclassify ;
     @Transient

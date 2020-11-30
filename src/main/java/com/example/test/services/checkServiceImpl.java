@@ -34,8 +34,9 @@ public class checkServiceImpl implements  checkService{
         }
     }
     @Override
-    public int  addCk(Map<String,Object> map) {
-        if (this.checkMapper.addcheck(map) != 0) {
+    public int  addCk(drugsCheck drugsCheck) {
+        if (this.checkMapper.addcheck(drugsCheck) != 0
+        &&this.checkMapper.updateDrug(drugsCheck)!=0) {
             return 1;
         } else {
             return -1;

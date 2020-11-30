@@ -4,8 +4,7 @@ import com.example.test.pojo.drugsCheck;
 import com.example.test.services.checkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +16,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/checkDrugs")
+@CrossOrigin
 public class CheckController {
     @Autowired
     private checkService checkService;
@@ -56,9 +56,10 @@ public class CheckController {
     //添加
     @RequestMapping("/addCk")
     @ResponseBody
-    public Map<String,Object> addCk(Map<String,Object> map){
+    public Map<String,Object> addCk(drugsCheck drugsCheck){
+       // System.out.println(drugsCheck.toString());
         Map<String, Object> maps = new HashMap<>();
-        if(this.checkService.addCk(map)==1) {
+        if(this.checkService.addCk(drugsCheck)==1) {
             maps.put("resultCode", 1);
         }
         else{

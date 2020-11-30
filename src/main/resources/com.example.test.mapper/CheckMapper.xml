@@ -5,22 +5,26 @@
 <mapper namespace="com.example.test.mapper.checkMapper">
 
 <!-- 增加盘存记录-->
-    <insert id=" addcheck" parameterType="java.util.Map" useGeneratedKeys="false">
+    <insert id="addcheck" parameterType="java.util.Map" >
         insert into drugscheck
-        (ckdate,ckoperator,dno,dpnumber)
-        values
-        <foreach collection="list" item="item" index="index" separator=",">
-            (
-            #{date},
-            #{ckoperator},
-            #{item.dno},
-            #{item.dpnumber}
-            )
-        </foreach>
+        (ckno,ckdate,ckoperator,dno,dpnumber,remark)
+        values(#{ckno},#{ckdate},#{ckoperator},#{dno},#{dpnumber},#{remark});
     </insert>
+<!--        <foreach collection="list" item="item" index="index" separator=",">-->
+<!--            (-->
+<!--            #{date},-->
+<!--            #{ckoperator},-->
+<!--            #{item.dno},-->
+<!--            #{item.dpnumber}-->
+<!--            )-->
+<!--        </foreach>-->
 <!--    更新盘存-->
     <update id ="updateCkanddrug" parameterType="drugsCheck">
         update drugscheck set dpnumber=#{dpnumber} where dno = #{dno} and ckno= #{ckno};
+        update drugs  set dnumber  = #{dpnumber} where dno = #{dno};
+    </update>
+<!--    更新药品信息-->
+    <update id="updateDrug" parameterType="java.util.Map">
         update drugs  set dnumber  = #{dpnumber} where dno = #{dno};
     </update>
 <!--    选择盘存单号-->
@@ -30,12 +34,12 @@
 </select>
 <!--查询所有盘存记录-->
 <select id="selectAll" resultType="java.util.Map">
-    select * from drugscheck;
+    select drugscheck.* ,drugs.dnumber,dname from drugscheck,drugs where drugscheck.dno = drugs.dno;
 </select>
 
 <!--删除盘存单号-->
 <delete id="deleteCk" parameterType="drugscheck">
-        delete from drugscheck where dno = #{dno} and ckno = #{ckno} ;
+        delete from drugscheck where id = #{id} ;
 </delete>
 <!--   进入新增盘点时，获取的药品信息 -->
 <select id="newCr" parameterType="drugs" resultType="drugs">

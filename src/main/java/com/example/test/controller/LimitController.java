@@ -152,8 +152,20 @@ public Map<String,Object>  selectAllUserRole(){
 //    为某用户增加角色(通过uid,rid)
     public Map<String,Object>  addUr(String uid,String rid){
         Map<String,Object> map = new HashMap<>();
-       this.limitService.addUR(uid,rid);
         if(this.limitService.addUR(uid,rid)==1) {
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
+        return  map;
+    }
+    @RequestMapping("/deleteUr")
+    @ResponseBody
+//    删除用户角色(通过uid,rid)
+    public Map<String,Object>  deleteUr(String uid,String rid){
+        Map<String,Object> map = new HashMap<>();
+        if(this.limitService.delteUR(uid,rid)==1) {
             map.put("resultCode", 1);
         }
         else{
