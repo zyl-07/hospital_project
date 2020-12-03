@@ -1,5 +1,6 @@
 package com.example.test.controller;
 
+import com.example.test.pojo.indanhao;
 import com.example.test.pojo.put;
 import com.example.test.services.putService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,6 +96,20 @@ public class EnterController {
 
         Map<String,Object> map  = new HashMap<>();
         if(this.putService.deleteEr(put)==1){
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
+        return map;
+    }
+    @RequestMapping("/addsum")
+    @ResponseBody
+//   提交生成入库单号
+    public Map<String,Object>  addsum(indanhao indanhao){
+
+        Map<String,Object> map  = new HashMap<>();
+        if(this.putService.addsum(indanhao)==1){
             map.put("resultCode", 1);
         }
         else{

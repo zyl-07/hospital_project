@@ -3,17 +3,18 @@ package com.example.test.services;
 import com.example.test.pojo.lingyaodingdan;
 
 import java.util.List;
+import java.util.Map;
 
 public interface lingyaoService {
     void add(lingyaodingdan lingyaodingdan);
 
-    List<lingyaodingdan> findAll();
+    List<Map<String,Object>> findAll();
 
     List<lingyaodingdan> selectLy(lingyaodingdan lingyaodingdan);
 
-    void deleteLy(lingyaodingdan lingyaodingdan);
+    int deleteLy(lingyaodingdan lingyaodingdan);
 
-    void updateLy(lingyaodingdan lingyaodingdan);
+    int updateLy(lingyaodingdan lingyaodingdan);
 
-    void addLy(lingyaodingdan lingyaodingdan);
+    int addLy(lingyaodingdan lingyaodingdan);
 }

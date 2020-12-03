@@ -8,11 +8,15 @@
      from outware,drugs where outware.dno = drugs.dno and drugs.dno = #{dno} and odtime = #{odtime};
 </select>
  <insert id="addORecord" parameterType="java.util.Map">
-   insert into outware(odnumber,odtime,odtype,oremark,doperator,dno) values(#{odnumber},#{odtime},#{odtype},#{oremark},#{doperator},#{dno});
+   insert into outware(ono,odnumber,odtime,odtype,oremark,doperator,dno)
+    values(#{ono},#{odnumber},#{odtime},#{odtype},#{oremark},#{doperator},#{dno});
+</insert>
+    <insert id="addoutsum" parameterType="java.util.Map">
+    insert into outdanhao(ono,jiaohuoren,yanshouren,jizhangren) values(#{ono},#{jiaohuoren},#{yanshouren},#{jizhangren});
 </insert>
     <select id="selectAll" resultType="java.util.Map">
-    select id,drugs.dno,dname,dunit,odnumber,dclassify,odtime,odtype,oremark,doperator
-    from outware,drugs where outware.dno = drugs.dno;
+    select outware.* ,drugs.dno,dname,dunit
+    from outware,drugs where outware.dno = drugs.dno order by ono;
 </select>
     <update id="updateDrug" parameterType="java.util.Map">
     update drugs set dnumber = dnumber-#{odnumber} where drugs.dno = #{dno};
@@ -22,6 +26,6 @@
         delete from outware where id = #{id};
     </delete>
     <update id="updateOR" parameterType="java.util.Map">
-    update inware set odnumber=#{odnumber},odtype=#{odtype},oremark=#{oremark},doperator=#{doperator} where dno = #{dno} and odtime = #{odtime};
+    update inware set odnumber=#{odnumber},odtype=#{odtype},oremark=#{oremark},doperator=#{doperator} where id = #{id};
 </update>
 </mapper>

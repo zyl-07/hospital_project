@@ -8,11 +8,15 @@
      from inware,drugs where inware.dno = drugs.dno and drugs.dno = #{dno} and idtime = #{idtime};
 </select>
 <select id="selectAll" resultType="java.util.Map">
-    select id,drugs.dno,dname,dunit,idnumber,dclassify,idtime,idtype,iremark,doperator
-    from inware,drugs where inware.dno = drugs.dno;
+    select inware.*,drugs.dno,dname,dunit
+    from inware,drugs where inware.dno = drugs.dno order by pno;
 </select>
 <insert id="addERecord"  parameterType="java.util.Map">
-insert into inware(idnumber,idtime,idtype,iremark,doperator,dno) values(#{idnumber},#{idtime},#{idtype},#{iremark},#{doperator},#{dno});
+insert into inware(pno,idnumber,idtime,idtype,iremark,doperator,dno)
+values(#{pno},#{idnumber},#{idtime},#{idtype},#{iremark},#{doperator},#{dno});
+</insert>
+<insert id="addInsum" parameterType="java.util.Map">
+    insert into indanhao(pno,jiaohuoren,yanshouren,jizhangren) values(#{pno},#{jiaohuoren},#{yanshouren},#{jizhangren});
 </insert>
 <!--   添加入库记录后，更新药品信息-->
 <update id="updateDrug" parameterType="java.util.Map">
@@ -23,6 +27,6 @@ insert into inware(idnumber,idtime,idtype,iremark,doperator,dno) values(#{idnumb
     </delete>
 <!--    更改入库记录-->
 <update id="updateER" parameterType="java.util.Map">
-    update inware set idnumber=#{idnumber},idtype=#{idtype},iremark=#{iremark},doperator=#{doperator} where dno = #{dno} and idtime = #{idtime};
+    update inware set idnumber=#{idnumber},idtype=#{idtype},iremark=#{iremark},doperator=#{doperator} where id = #{id};
 </update>
 </mapper>

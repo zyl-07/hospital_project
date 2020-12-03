@@ -13,10 +13,15 @@ public class drugsCheck {
     String ckdate;//盘点日期
     String ckoperator;//操作员
     @ManyToOne(cascade = {CascadeType.MERGE},optional = false)
-    @JoinColumn(name = "dno")
+    @JoinColumns ({
+            @JoinColumn(name="dno",referencedColumnName = "dno",insertable = false, updatable = false),
+            @JoinColumn(name="dname",referencedColumnName = "dname",insertable = false, updatable = false)
+    })
     drugs drugs;
     @Transient
-    String dno;
+    Integer dno;
+    @Transient
+    String dname;
     String remark;
     Integer dpnumber;//盘存数量
 
@@ -60,11 +65,11 @@ public class drugsCheck {
         this.drugs = drugs;
     }
 
-    public String getDno() {
+    public Integer getDno() {
         return dno;
     }
 
-    public void setDno(String dno) {
+    public void setDno(Integer dno) {
         this.dno = dno;
     }
 
@@ -82,5 +87,13 @@ public class drugsCheck {
 
     public void setDpnumber(Integer dpnumber) {
         this.dpnumber = dpnumber;
+    }
+
+    public String getDname() {
+        return dname;
+    }
+
+    public void setDname(String dname) {
+        this.dname = dname;
     }
 }

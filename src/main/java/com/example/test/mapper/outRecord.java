@@ -2,6 +2,7 @@ package com.example.test.mapper;
 
 import com.example.test.pojo.drugs;
 import com.example.test.pojo.out;
+import com.example.test.pojo.outdanhao;
 import org.apache.ibatis.annotations.Mapper;
 
 
@@ -15,4 +16,5 @@ public interface outRecord {
     int deleteOr(out out);
     List<Map<String,Object>> selectOr(out out);
     int updateOR(out out);
+    int addoutsum(outdanhao outdanhao);
 }

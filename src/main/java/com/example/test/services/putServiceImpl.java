@@ -1,6 +1,7 @@
 package com.example.test.services;
 
 import com.example.test.mapper.enteRecord;
+import com.example.test.pojo.indanhao;
 import com.example.test.pojo.put;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -51,6 +52,17 @@ public class putServiceImpl implements putService {
     @Override
     public int deleteEr(put put) {
         if (this.enteRecord.deleteEr(put)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+
+    @Override
+    public int addsum(indanhao indanhao) {
+        if (this.enteRecord.addInsum(indanhao)!=0)
         {
             return 1;
         }

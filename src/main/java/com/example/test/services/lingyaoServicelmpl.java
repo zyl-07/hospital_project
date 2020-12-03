@@ -1,6 +1,5 @@
 package com.example.test.services;
 
-import com.example.test.mapper.checkMapper;
 import com.example.test.mapper.lingyaoMapper;
 import com.example.test.pojo.lingyaodingdan;
 import org.springframework.stereotype.Service;
@@ -8,11 +7,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
+
 @Service
 @Transactional
 public class lingyaoServicelmpl implements lingyaoService{
     @Resource
-    private com.example.test.mapper.lingyaoMapper lingyaoMapper;
+    private lingyaoMapper lingyaoMapper;
 
     @Override
     public void add(lingyaodingdan lingyaodingdan) {
@@ -20,8 +21,8 @@ public class lingyaoServicelmpl implements lingyaoService{
     }
 
     @Override
-    public List<lingyaodingdan> findAll() {
-        return null;
+    public List<Map<String, Object>> findAll() {
+        return this.lingyaoMapper.selectAll();
     }
 
     @Override
@@ -30,17 +31,29 @@ public class lingyaoServicelmpl implements lingyaoService{
     }
 
     @Override
-    public void deleteLy(lingyaodingdan lingyaodingdan) {
-        this.lingyaoMapper.deleteLy(lingyaodingdan);
+    public int deleteLy(lingyaodingdan lingyaodingdan) {
+        if (this.lingyaoMapper.deleteLy(lingyaodingdan)!= 0) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     @Override
-    public void updateLy(lingyaodingdan lingyaodingdan) {
-        this.lingyaoMapper.updateLy(lingyaodingdan);
+    public int updateLy(lingyaodingdan lingyaodingdan) {
+        if (this.lingyaoMapper.updateLy(lingyaodingdan)!= 0) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 
     @Override
-    public void addLy(lingyaodingdan lingyaodingdan) {
-        this.lingyaoMapper.addlingyao(lingyaodingdan);
+    public int addLy(lingyaodingdan lingyaodingdan) {
+        if (this.lingyaoMapper.addlingyao(lingyaodingdan)!= 0) {
+            return 1;
+        } else {
+            return -1;
+        }
     }
 }

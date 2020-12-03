@@ -21,6 +21,7 @@ public class put {
     @Id//主键
     @GeneratedValue(strategy = GenerationType.IDENTITY)//主键的策略
     Integer id;//编号
+    String pno;
  // @Column(nullable = false)
  // String dname;//药品名称
   //  String dunit;//规格&单位
@@ -30,8 +31,11 @@ public class put {
     String idtype;//入库类型
     String iremark;//备注
     String doperator;//操作员
+//    String jiaohuoren ;//交货人
+//    String yanshouren ;//验收人
+//    String jizhangren ;//记账人
     @Transient
-    String dno;
+    Integer dno;
 //    @ManyToOne
 //    @JoinColumn(name="wid")
 //    ware ware;
@@ -46,6 +50,14 @@ public class put {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getPno() {
+        return pno;
+    }
+
+    public void setPno(String pno) {
+        this.pno = pno;
     }
 
     public Integer getIdnumber() {
@@ -86,6 +98,14 @@ public class put {
 
     public void setDoperator(String doperator) {
         this.doperator = doperator;
+    }
+
+    public Integer getDno() {
+        return dno;
+    }
+
+    public void setDno(Integer dno) {
+        this.dno = dno;
     }
 
     public drugs getDrug() {

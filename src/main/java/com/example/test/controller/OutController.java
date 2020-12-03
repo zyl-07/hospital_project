@@ -1,6 +1,7 @@
 package com.example.test.controller;
 
 import com.example.test.pojo.out;
+import com.example.test.pojo.outdanhao;
 import com.example.test.pojo.put;
 import com.example.test.services.outService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -93,6 +94,20 @@ public class OutController {
     public Map<String,Object>  deleteOr(out out){
         Map<String,Object> map  = new HashMap<>();
         if(this.outService.deleteOr(out)==1){
+            map.put("resultCode", 1);
+        }
+        else{
+            map.put("resultCode", -1);
+        }
+        return map;
+    }
+
+    @RequestMapping("/addsum")
+    @ResponseBody
+//    提交生成出库单号
+    public Map<String,Object>  addsum(outdanhao outdanhao){
+        Map<String,Object> map  = new HashMap<>();
+        if(this.outService.addsum(outdanhao)==1){
             map.put("resultCode", 1);
         }
         else{

@@ -1,6 +1,7 @@
 package com.example.test.mapper;
 
 import com.example.test.pojo.drugs;
+import com.example.test.pojo.indanhao;
 import com.example.test.pojo.put;
 
 import java.util.List;
@@ -13,4 +14,5 @@ public interface enteRecord {
     List<Map<String,Object>> selectEr(put put);
     List<Map<String,Object>> selectAll();
     int updateER(put put);
+    int addInsum(indanhao indanhao);
 }

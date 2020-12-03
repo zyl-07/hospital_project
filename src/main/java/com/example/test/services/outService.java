@@ -1,6 +1,7 @@
 package com.example.test.services;
 
 import com.example.test.pojo.out;
+import com.example.test.pojo.outdanhao;
 
 import java.util.List;
 import java.util.Map;
@@ -12,4 +13,5 @@ public interface outService {
     List<Map<String,Object>> selectOr(out out);
     int updateOr(out out);
     int deleteOr(out out);
+    int addsum(outdanhao outdanhao);
 }

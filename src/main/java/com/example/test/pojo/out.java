@@ -21,7 +21,8 @@ import java.util.List;
 public class out {
     @Id//主键
     @GeneratedValue(strategy = GenerationType.IDENTITY)//主键的策略
-   Integer id;//编号
+    Integer id;//编号
+    String ono;
  //  @Column(nullable = false)
 //    String dname;//药品名称
 //    String dunit;//规格&单位
@@ -31,6 +32,9 @@ public class out {
     String odtype;//出库类型
     String oremark;//备注
     String doperator;//操作员
+//    String jiaohuoren ;//交货人
+//    String yanshouren ;//验收人
+//    String jizhangren ;//记账人
 
 //    @ManyToOne
 //    @JoinColumn(name="wid")
@@ -39,7 +43,7 @@ public class out {
     @JoinColumn(name = "dno")
      drugs drug;
     @Transient
-    String dno;
+    Integer dno;
 
     public Integer getId() {
         return id;
@@ -47,6 +51,14 @@ public class out {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getOno() {
+        return ono;
+    }
+
+    public void setOno(String ono) {
+        this.ono = ono;
     }
 
     public Integer getOdnumber() {
@@ -57,6 +69,13 @@ public class out {
         this.odnumber = odnumber;
     }
 
+    public String getOdtime() {
+        return odtime;
+    }
+
+    public void setOdtime(String odtime) {
+        this.odtime = odtime;
+    }
 
     public String getOdtype() {
         return odtype;
@@ -90,19 +109,11 @@ public class out {
         this.drug = drug;
     }
 
-    public String getDno() {
+    public Integer getDno() {
         return dno;
     }
 
-    public void setDno(String dno) {
+    public void setDno(Integer dno) {
         this.dno = dno;
-    }
-
-    public String getOdtime() {
-        return odtime;
-    }
-
-    public void setOdtime(String odtime) {
-        this.odtime = odtime;
     }
 }

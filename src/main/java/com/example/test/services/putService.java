@@ -1,5 +1,6 @@
 package com.example.test.services;
 
+import com.example.test.pojo.indanhao;
 import com.example.test.pojo.put;
 
 import java.util.List;
@@ -11,4 +12,5 @@ public interface putService {
     List<Map<String,Object>> selectEr(put put);
     int updateEr(put put);
     int deleteEr(put put);
+    int addsum(indanhao indanhao);
 }

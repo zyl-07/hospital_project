@@ -1,7 +1,9 @@
 package com.example.test.services;
 
 import com.example.test.mapper.outRecord;
+import com.example.test.pojo.indanhao;
 import com.example.test.pojo.out;
+import com.example.test.pojo.outdanhao;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,6 +52,17 @@ public class outServiceImpl implements outService {
     @Override
     public int deleteOr(out out) {
         if (this.outRecord.deleteOr(out)!=0)
+        {
+            return 1;
+        }
+        else{
+            return -1;
+        }
+    }
+
+    @Override
+    public int addsum(outdanhao outdanhao) {
+        if (this.outRecord.addoutsum(outdanhao)!=0)
         {
             return 1;
         }

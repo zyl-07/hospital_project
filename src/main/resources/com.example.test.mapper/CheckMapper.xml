@@ -7,8 +7,8 @@
 <!-- 增加盘存记录-->
     <insert id="addcheck" parameterType="java.util.Map" >
         insert into drugscheck
-        (ckno,ckdate,ckoperator,dno,dpnumber,remark)
-        values(#{ckno},#{ckdate},#{ckoperator},#{dno},#{dpnumber},#{remark});
+        (ckno,ckdate,ckoperator,dno,dname,dpnumber,remark)
+        values(#{ckno},#{ckdate},#{ckoperator},#{dno},#{dname},#{dpnumber},#{remark});
     </insert>
 <!--        <foreach collection="list" item="item" index="index" separator=",">-->
 <!--            (-->
@@ -34,7 +34,7 @@
 </select>
 <!--查询所有盘存记录-->
 <select id="selectAll" resultType="java.util.Map">
-    select drugscheck.* ,drugs.dnumber,dname from drugscheck,drugs where drugscheck.dno = drugs.dno;
+    select drugscheck.* ,drugs.dnumber from drugscheck,drugs where drugscheck.dno = drugs.dno;
 </select>
 
 <!--删除盘存单号-->

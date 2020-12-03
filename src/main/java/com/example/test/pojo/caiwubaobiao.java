@@ -31,5 +31,5 @@ public class caiwubaobiao {
     @JoinColumn(name = "dno")
     drugs drugs;
     @Transient
-    String dno;
+    Integer dno;
 }

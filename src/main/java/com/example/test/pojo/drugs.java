@@ -15,8 +15,8 @@ import javax.persistence.*;
 @Table(name = "drugs")
 public class drugs  {
     @Id//主键
-    @GeneratedValue//主键的策
-    String dno;//药品编号
+    @GeneratedValue(strategy = GenerationType.IDENTITY)//主键的策
+    Integer dno;//药品编号
     @Column(nullable = false)
     String dname ;//药品名称
     String dclassify ;//药品类别
@@ -41,11 +41,12 @@ public class drugs  {
     ware ware;
     @Transient
     Integer wid;
-    public String getDno() {
+
+    public Integer getDno() {
         return dno;
     }
 
-    public void setDno(String dno) {
+    public void setDno(Integer dno) {
         this.dno = dno;
     }
 
@@ -113,11 +114,27 @@ public class drugs  {
         this.duedata = duedata;
     }
 
+    public String getRemark() {
+        return remark;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
+
     public com.example.test.pojo.ware getWare() {
         return ware;
     }
 
     public void setWare(com.example.test.pojo.ware ware) {
         this.ware = ware;
+    }
+
+    public Integer getWid() {
+        return wid;
+    }
+
+    public void setWid(Integer wid) {
+        this.wid = wid;
     }
 }
