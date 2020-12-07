@@ -31,12 +31,12 @@ public class ShiroConfig {
         filterChainDefinitmap.put("/logout","logout");
         //匿名可以访问的，游客模式
         filterChainDefinitmap.put("/admin/**","anon");
-        filterChainDefinitmap.put("/**","anon");
+        //filterChainDefinitmap.put("/**","anon");
         //登录用户才可以访问
-//        filterChainDefinitmap.put("/drugs/**","authc");
+       filterChainDefinitmap.put("/**","authc");
 //        filterChainDefinitmap.put("/limit/**","authc");
 //        //管理员角色才可以
-//        filterChainDefinitmap.put("/drugs/findAll","perms[admin]");
+       filterChainDefinitmap.put("/limit/**","perms[admin]");
 //        //有编辑权限的才可以访问
 //        filterChainDefinitmap.put("/drugs/adddrug","perms[查看药品信息]");
         //全局的,

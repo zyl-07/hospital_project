@@ -70,4 +70,9 @@ public class putServiceImpl implements putService {
             return -1;
         }
     }
+
+    @Override
+    public List<Map<String, Object>> findAllsum() {
+        return this.enteRecord.selectAllsum();
+    }
 }

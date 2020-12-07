@@ -16,11 +16,11 @@ public class caiwubaobiao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer cwno;//报表号
-    String dname;//药品名称
-    String dunit;//规格&单位
-    float dprice;//单价
+    //String dname;//药品名称
+   // String dunit;//规格&单位
+   // float dprice;//单价
     String cwdate;//报表年月
-    Integer cqnumber;//初期数量
+    //Integer cqnumber;//初期数量
     Integer rnumber;//入库数量
     Integer cnumber;//出库数量
     float cqjine;//初期金额

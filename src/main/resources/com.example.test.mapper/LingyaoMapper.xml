@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.test.mapper.lingyaoMapper">
+    <insert id="addlingyao" parameterType="java.util.Map">
+    insert into lingyaodingdan(lno,dno,dname,dprice,dclassify,lguige,lnumber,ltime,ljine,lfayao,lfyjine,lshenqingren,fuzeren) values(#{lno},#{dno},#{dname},#{dprice},#{dclassify},#{lguige},#{lnumber},#{ltime},#{ljine},#{lfayao},#{lfyjine},#{lshenqingren},#{fuzeren})
+</insert>
+    <update id ="updateLy" parameterType="lingyaodingdan">
+        update lingyaodingdan set dno = #{dno},dname = #{dname},dprice=#{dprice},dclassify=#{classify},lguige=#{lguige},ltime=#{ltime},ljine=#{ljine},lfayao=#{lfayao},lfyjine=#{lfyjine},lshenqingren=#{lshenqingren},fuzeren=#{fuzeren} where lid = #{lid};
+        update lingyaodingdan  set lnumber  = #{lnumber} where lid = #{lid};
+    </update>
+    <select id="selectLy" parameterType="lingyaodingdan">
+    select lid,dno,dname,dprice,dclassify,lguige,lnumber,ltime,ljine,lfayao,lfyjine,lshenqingren,fuzeren from lingyaodingdan
+    where ltime  = #{ltime};
+    </select>
+    <delete id="deleteLy" parameterType="lingyaodingdan">
+        delete from lingyaodingdan where lid = #{lid};
+    </delete>
+
+    <select id="selectAll" resultType="java.util.Map">
+        select * from lingyaodingdan;
+    </select>
+</mapper>

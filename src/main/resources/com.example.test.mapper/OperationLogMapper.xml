@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.test.mapper.OperationLogMapper">
+
+    <resultMap type="com.example.test.pojo.OperationLog" id="OperationLogMap">
+        <result property="operationLogId" column="operation_log_id" jdbcType="INTEGER"/>
+        <result property="logLevel" column="log_level" jdbcType="VARCHAR"/>
+        <result property="operationTime" column="operation_time" jdbcType="VARCHAR"/>
+        <result property="message" column="message" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--    只查询标志位为0（即存在的日志记录）-->
+    <select id="findAll" resultMap="OperationLogMap">
+        select * from operation_log where delete_flag = '0'
+    </select>
+
+    <!--    删除只是将标志位改为1-->
+    <update id="deleteById" parameterType="String">
+        update operation_log
+        set delete_flag = '1'
+        where operation_log_id = #{operationLogId}
+    </update>
+
+
+</mapper>

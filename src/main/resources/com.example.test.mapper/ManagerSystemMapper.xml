@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.test.mapper.ManagerSystemLogMapper">
+
+    <resultMap type="com.example.test.pojo.ManagerSystemLog" id="ManagerSystemLogMap">
+        <result property="managerSystemLogId" column="manager_system_log_id" jdbcType="INTEGER"/>
+        <result property="className" column="class_name" jdbcType="VARCHAR"/>
+        <result property="methodName" column="method_name" jdbcType="VARCHAR"/>
+        <result property="logLevel" column="log_level" jdbcType="VARCHAR"/>
+        <result property="message" column="message" jdbcType="VARCHAR"/>
+        <result property="createTime" column="create_time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--    只查询标志位为0（即存在的日志记录）-->
+    <select id="findAll" resultMap="ManagerSystemLogMap">
+        select * from manager_system_log where delete_flag = '0'
+    </select>
+
+    <!--    删除只是将标志位改为1-->
+    <update id="deleteById" parameterType="String">
+        update manager_system_log
+        set delete_flag = '1'
+        where manager_system_log_id = #{managerSystemLogId}
+    </update>
+
+
+</mapper>

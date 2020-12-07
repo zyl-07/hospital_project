@@ -14,4 +14,5 @@ public interface outService {
     int updateOr(out out);
     int deleteOr(out out);
     int addsum(outdanhao outdanhao);
+    List<Map<String,Object>> findAllsum();
 }

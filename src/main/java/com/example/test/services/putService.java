@@ -13,4 +13,5 @@ public interface putService {
     int updateEr(put put);
     int deleteEr(put put);
     int addsum(indanhao indanhao);
+    List<Map<String,Object>> findAllsum();
 }

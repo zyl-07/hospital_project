@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.test.mapper.caiwuMapper">
+
+    <!-- 从其他表单提取数据插入财务报表-->
+    <insert id="addcaiwu" parameterType="java.util.Map" useGeneratedKeys="false">
+        insert into caiwubaobiao
+            (dno,cqnumber,rnumber,cnumber,cqjine,yk,qmnumber,qmjine)
+            select #{dno},#{0},#{sum(idnumber)},#{sum(odnumber)},#{10000},#{yk},#{qmnumber},#{qmjine} from drugs,outware,inware
+            where drugs.dno=outware.dno and outware.dno=inware.dno;
+    </insert>
+    <!--    查看财务报表-->
+    <select id="selectAll" resultType="java.util.Map">
+        select caiwubaobiao.*,drugs.dname,drugs.dunit,drugs.dprice from drugs,caiwubaobiao where drugs.dno = caiwubaobiao.dno;
+    </select>
+</mapper>

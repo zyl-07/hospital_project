@@ -29,4 +29,7 @@ values(#{pno},#{idnumber},#{idtime},#{idtype},#{iremark},#{doperator},#{dno});
 <update id="updateER" parameterType="java.util.Map">
     update inware set idnumber=#{idnumber},idtype=#{idtype},iremark=#{iremark},doperator=#{doperator} where id = #{id};
 </update>
+    <select id="selectAllsum" resultType="java.util.Map">
+        select * from indanhao;
+    </select>
 </mapper>

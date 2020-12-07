@@ -70,4 +70,9 @@ public class outServiceImpl implements outService {
             return -1;
         }
     }
+
+    @Override
+    public List<Map<String, Object>> findAllsum() {
+        return this.outRecord.selectAllsum();
+    }
 }

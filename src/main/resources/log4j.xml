@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="GB2312" ?>
+<!DOCTYPE log4j:configuration SYSTEM "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+<log4j:configuration debug="true">
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<!DOCTYPE log4j:configuration PUBLIC "-//log4j/log4j Configuration//EN" "log4j.dtd">-->
+
+<!--<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">-->
+
+
+    <!-- 日志输出到控制台 -->
+    <appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+        <!-- 日志输出格式 -->
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="[%5p][%d{yyyy-MM-dd HH:mm:ss SSS}] class: %c%n%m%n"/>
+        </layout>
+
+        <!--过滤器设置输出的级别-->
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <!-- 设置日志输出的最小级别 -->
+            <param name="levelMin" value="WARN"/>
+            <!-- 设置日志输出的最大级别 -->
+            <param name="levelMax" value="ERROR"/>
+        </filter>
+    </appender>
+
+    <appender name="loginAppender" class="org.apache.log4j.jdbc.JDBCAppender">
+        <param name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <param name="URL"
+               value="jdbc:mysql://127.0.0.1:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
+        <param name="user" value="zyl"/>
+        <param name="password" value="zyl1107xixi"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="insert into login_log (ip_address,login_time,log_level,user_id,message)
+                            VALUES ('%X{ipAddress}','%d{yyyy-MM-dd HH:mm:ss}','%p','%X{userId}','%m')"/>
+        </layout>
+
+    </appender>
+
+    <appender name="systemAppender" class="org.apache.log4j.jdbc.JDBCAppender">
+        <param name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <param name="URL"
+               value="jdbc:mysql://127.0.0.1:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
+        <param name="user" value="zyl"/>
+        <param name="password" value="zyl1107xixi"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="insert into manager_system_log (class_name, method_name, create_time, log_level, message)
+                            VALUES ('%X{className}', '%X{methodName}', '%d{yyyy-MM-dd HH:mm:ss}', '%p', '%m')"/>
+        </layout>
+
+    </appender>
+
+    <appender name="operationAppender" class="org.apache.log4j.jdbc.JDBCAppender">
+        <param name="driver" value="com.mysql.cj.jdbc.Driver"/>
+        <param name="URL"
+               value="jdbc:mysql://127.0.0.1:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
+        <param name="user" value="zyl"/>
+        <param name="password" value="zyl1107xixi"/>
+
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern"
+                   value="insert into operation_log (log_level, operation_time, message, user_id)
+                            VALUES ('%p', '%d{yyyy-MM-dd HH:mm:ss}', '%m', '%X{userId}')"/>
+        </layout>
+    </appender>
+    <!--
+        1. 指定logger的设置，additivity是否遵循缺省的继承机制
+        2. 当additivity="false"时，root中的配置就失灵了，不遵循缺省的继承机制
+        3. 代码中使用Logger.getLogger("logTest")获得此输出器，且不会使用根输出器
+    -->
+    <logger name="loginInfo" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="loginAppender"/>
+    </logger>
+
+    <logger name="systemInfo" additivity="false">
+        <level value="WARN"/>
+        <appender-ref ref="systemAppender"/>
+    </logger>
+
+    <logger name="operationInfo" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="operationAppender"/>
+    </logger>
+
+    <!-- 根logger的设置，若代码中未找到指定的logger，则会根据继承机制，使用根logger-->
+    <root>
+        <appender-ref ref="stdout"/>
+    </root>
+
+</log4j:configuration>

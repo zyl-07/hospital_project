@@ -2,12 +2,15 @@ package com.example.test.mapper;
 
 import com.example.test.pojo.permission;
 import com.example.test.pojo.role;
+import org.apache.ibatis.annotations.CacheNamespace;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.cache.decorators.FifoCache;
 
 import java.util.List;
 import java.util.Map;
 @Mapper
+@CacheNamespace(eviction = FifoCache.class,flushInterval = 60000,size = 1024,readWrite = false)
 public interface limitMapper {
     //对role
     int addRole(role role);

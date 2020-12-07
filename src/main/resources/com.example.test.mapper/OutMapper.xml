@@ -28,4 +28,7 @@
     <update id="updateOR" parameterType="java.util.Map">
     update inware set odnumber=#{odnumber},odtype=#{odtype},oremark=#{oremark},doperator=#{doperator} where id = #{id};
 </update>
+    <select id="selectAllsum" resultType="java.util.Map">
+        select * from outdanhao;
+    </select>
 </mapper>
