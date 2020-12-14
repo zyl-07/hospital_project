@@ -11,6 +11,7 @@ import com.example.test.services.OperationLogService;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -25,7 +26,8 @@ import java.util.Map;
 
  */
 @CrossOrigin(origins = "*", maxAge = 3600)
-@RestController("/log")
+@Controller
+@RequestMapping("/log")
 public class LogController {
 
     @Autowired
@@ -43,9 +45,10 @@ public class LogController {
     /**
      * 查看登录日志列表
      *
-     * @return message的data中放入查到的日志列表
+     * @return map的loginlogs中放入查到的日志列表
      */
-    @PostMapping("/loginlog/{id}")
+    @RequestMapping("/loginlog")
+    @ResponseBody
     public Map<String,Object> findAllLoginLog() {
         List<LoginLog> loginLogs = loginLogService.findAll();
         Map<String,Object> map = new HashMap<>();
@@ -61,16 +64,17 @@ public class LogController {
      * @param loginLogId 待删除的登录日志记录的id号
      * @return message中resultMsg返回删除成功与否
      */
-    @DeleteMapping("/loginlog/{id}")
-    public Map<String,Object> deleteLoginLogById(@PathVariable("id") String loginLogId, HttpSession session) {
-        Object uid = session.getAttribute("userId");
+    @RequestMapping("/deleteLoginLog")
+    @ResponseBody
+    public Map<String,Object> deleteLoginLogById(String loginLogId) {
+
         int i = loginLogService.deleteById(loginLogId);
         Map<String,Object> map = new HashMap<>();
         if (i == 1) {
-            MDC.clear();
-            MDC.put("userId",uid.toString());
-            operatorloger.info("删除了登录日志"+loginLogId);
-            MDC.clear();
+//            MDC.clear();
+//            MDC.put("userId",uid.toString());
+//            operatorloger.info("删除了登录日志"+loginLogId);
+//            MDC.clear();
             map.put("resultCode",1);
             map.put("message","删除成功");
             map.put("data",null);
@@ -88,7 +92,8 @@ public class LogController {
      *
      * @return message中data放入查到的数据
      */
-    @PostMapping("/syslog/{id}")
+    @RequestMapping("/syslog")
+    @ResponseBody
     public Map<String,Object> findAllSysLog() {
         List<ManagerSystemLog> systemLogs = systemLogService.findAll();
 
@@ -105,8 +110,9 @@ public class LogController {
      * @param sysLogId 待删除系统日志表中的id
      * @return message中resultMsg返回删除成功与否
      */
-    @DeleteMapping("/syslog/{id}")
-    public Map<String,Object> deleteSysLogById(@PathVariable("id") String sysLogId,HttpSession session) {
+    @RequestMapping("/deleteSyslog")
+    @ResponseBody
+    public Map<String,Object> deleteSysLogById( String sysLogId,HttpSession session) {
         Object uid = session.getAttribute("userId");
         int i = systemLogService.deleteById(sysLogId);
         Map<String,Object> map = new HashMap<>();
@@ -131,7 +137,8 @@ public class LogController {
      *
      * @return message中data放入查到的数据
      */
-    @PostMapping("/operlog/{id}")
+    @RequestMapping("/operlog")
+    @ResponseBody
     public Map<String,Object> findAllOperLog() {
         List<OperationLog> all = operationLogService.findAll();
         Map<String,Object> map = new HashMap<>();
@@ -147,8 +154,9 @@ public class LogController {
      * @param operLogId 待删除操作日志表中的id
      * @return message中resultMsg返回删除成功与否
      */
-    @DeleteMapping("/operlog/{id}")
-    public Map<String,Object> deleteOperLogById(@PathVariable("id") String operLogId) {
+    @RequestMapping("/deleteOperlog")
+    @ResponseBody
+    public Map<String,Object> deleteOperLogById(String operLogId) {
         int i = operationLogService.deleteById(operLogId);
         Map<String,Object> map = new HashMap<>();
         if (i == 1) {

@@ -2,6 +2,7 @@ package com.example.test.mapper;
 
 
 import com.example.test.pojo.LoginLog;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,5 +28,5 @@ public interface LoginLogMapper {
      * @param loginLogId oper_log表中的主码
      * @return 删除的行数
      */
-    int deleteById(String loginLogId);
+    int deleteById(@Param("loginLogId") String loginLogId);
 }

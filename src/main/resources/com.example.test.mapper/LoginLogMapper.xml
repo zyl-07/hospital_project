@@ -18,7 +18,7 @@
     </select>
 
 <!--    删除只是将标志位改为1-->
-    <update id="deleteById" parameterType="String">
+    <update id="deleteById" >
         update login_log set delete_flag = '1' where login_log_id = #{loginLogId}
     </update>
 

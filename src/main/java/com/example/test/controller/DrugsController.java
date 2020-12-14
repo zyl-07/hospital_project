@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.*;
 import com.example.test.services.drugService;
 import com.example.test.pojo.drugs;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -39,11 +41,10 @@ public class DrugsController {
     @ResponseBody
 
     //添加药品
-    public Map<String ,Object> adddrug(drugs drug, HttpSession session){
+    public Map<String ,Object> adddrug(drugs drug){
         Map<String, Object> map = new HashMap<>();
                if( this.drugService.add(drug)==1) {
-                    session.getAttribute("userId");
-
+                   // session.getAttribute("userId");
                    map.put("resultCode", 1);
 
                }
@@ -62,7 +63,7 @@ public class DrugsController {
         List<Map<String,Object>> list = this.drugService.findAll();
        if(null!=list) {
            MDC.clear();
-           MDC.put("userId",uid.toString());
+           MDC.put("userId", uid.toString());
            operatorloger.info("查询了药品");
            MDC.clear();
            map.put("resultCode", 1);
@@ -79,6 +80,7 @@ public class DrugsController {
     public Map<String,Object> selectdrug(drugs drug,HttpSession session){
         Map<String,Object> map = new HashMap<>();
         List<drugs> list = this.drugService.selectdrug(drug);
+
         if(null!=list) {
 
             map.put("resultCode", 1);

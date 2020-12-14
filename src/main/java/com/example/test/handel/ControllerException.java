@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.servlet.ModelAndView;
-
+import org.apache.shiro.authz.AuthorizationException;
+import org.apache.shiro.authz.UnauthorizedException;
+import org.springframework.http.HttpStatus;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -19,7 +21,7 @@ public class ControllerException {
      * *
      * * @param request    
      * * @param @return
-     * */    
+     * */
     @ExceptionHandler({Exception.class})
     public ModelAndView handleException(HttpServletRequest request, Exception e) throws Exception {
         logger.error("Request URL : {} , Exception : {}", request.getRequestURL(), e);
@@ -31,5 +33,19 @@ public class ControllerException {
         mav.addObject("exception", e);       
         mav.setViewName("error/error");
         return mav;    
-    } }
+    }
+    @ResponseStatus(value = HttpStatus.FORBIDDEN)
+    @ExceptionHandler(UnauthorizedException.class)
+    public String handleException(UnauthorizedException e) {
+        logger.debug(e.getMessage());
+        return "403";
+    }
+
+    @ResponseStatus(value = HttpStatus.FORBIDDEN)
+    @ExceptionHandler(AuthorizationException.class)
+    public String handleException2(AuthorizationException e) {
+        logger.debug(e.getMessage());
+        return "403";
+    }
+}
 

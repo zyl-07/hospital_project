@@ -45,10 +45,10 @@ public class CheckController {
     //删除
     public Map<String,Object> deleteCk(drugsCheck drugsCheck, HttpSession session){
         Map<String, Object> map = new HashMap<>();
-        String uid = (String) session.getAttribute("userId");
+        Object uid = session.getAttribute("userId");
         if(this.checkService.deleteCk(drugsCheck)==1) {
             MDC.clear();
-            MDC.put("userId",uid);
+            MDC.put("userId",uid.toString());
             operatorloger.info("删除了盘存信息"+drugsCheck.getId());
             MDC.clear();
             map.put("resultCode", 1);
@@ -65,12 +65,12 @@ public class CheckController {
     @RequestMapping("/addCk")
     @ResponseBody
     public Map<String,Object> addCk(drugsCheck drugsCheck,HttpSession session){
-        String uid = (String) session.getAttribute("userId");
+        Object uid = session.getAttribute("userId");
        // System.out.println(drugsCheck.toString());
         Map<String, Object> maps = new HashMap<>();
         if(this.checkService.addCk(drugsCheck)==1) {
             MDC.clear();
-            MDC.put("userId",uid);
+            MDC.put("userId",uid.toString());
             operatorloger.info("增加了盘存信息");
             MDC.clear();
             maps.put("resultCode", 1);
@@ -85,11 +85,11 @@ public class CheckController {
 
     //修改
     public Map<String,Object> updateCk(drugsCheck drugsCheck,HttpSession session){
-        String uid = (String) session.getAttribute("userId");
+        Object uid = session.getAttribute("userId");
         Map<String, Object> map = new HashMap<>();
         if(this.checkService.updateCk(drugsCheck)==1) {
             MDC.clear();
-            MDC.put("userId",uid);
+            MDC.put("userId",uid.toString());
             operatorloger.info("修改了盘存信息"+drugsCheck.getId());
             MDC.clear();
             map.put("resultCode", 1);

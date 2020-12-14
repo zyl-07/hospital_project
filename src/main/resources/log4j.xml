@@ -27,8 +27,8 @@
         <param name="driver" value="com.mysql.cj.jdbc.Driver"/>
         <param name="URL"
                value="jdbc:mysql://127.0.0.1:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
-        <param name="user" value="zyl"/>
-        <param name="password" value="zyl1107xixi"/>
+        <param name="user" value="root"/>
+        <param name="password" value="123456"/>
 
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
@@ -41,9 +41,9 @@
     <appender name="systemAppender" class="org.apache.log4j.jdbc.JDBCAppender">
         <param name="driver" value="com.mysql.cj.jdbc.Driver"/>
         <param name="URL"
-               value="jdbc:mysql://127.0.0.1:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
-        <param name="user" value="zyl"/>
-        <param name="password" value="zyl1107xixi"/>
+               value="jdbc:mysql://mysql:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
+        <param name="user" value="root"/>
+        <param name="password" value="123456"/>
 
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"
@@ -56,9 +56,9 @@
     <appender name="operationAppender" class="org.apache.log4j.jdbc.JDBCAppender">
         <param name="driver" value="com.mysql.cj.jdbc.Driver"/>
         <param name="URL"
-               value="jdbc:mysql://127.0.0.1:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
-        <param name="user" value="zyl"/>
-        <param name="password" value="zyl1107xixi"/>
+               value="jdbc:mysql://mysql:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
+        <param name="user" value="root"/>
+        <param name="password" value="123456"/>
 
         <layout class="org.apache.log4j.PatternLayout">
             <param name="ConversionPattern"

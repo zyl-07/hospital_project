@@ -27,6 +27,7 @@ public class drugs  {
     String prodata ;//生产日期
     String duedata ;//有效期
     String remark;
+    Integer cqnumber;//初期数量
     //我们在上面的代码中给了Student对Course进行级联保存
 // （cascade=CascadeType.PERSIST）的权限。
 // 此时，若Student实体持有的Course实体在数据库中不存在时，保存该Student时，
@@ -136,5 +137,13 @@ public class drugs  {
 
     public void setWid(Integer wid) {
         this.wid = wid;
+    }
+
+    public Integer getCqnumber() {
+        return cqnumber;
+    }
+
+    public void setCqnumber(Integer cqnumber) {
+        this.cqnumber = cqnumber;
     }
 }

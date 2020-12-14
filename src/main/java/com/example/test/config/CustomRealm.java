@@ -12,8 +12,13 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
+
 import org.apache.shiro.subject.PrincipalCollection;
+
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +28,31 @@ import java.util.Map;
 *自定义Realm
  */
 public class CustomRealm extends AuthorizingRealm {
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(CustomRealm.class);
     @Autowired
     private limitService limitService;
     @Autowired
     private userService userService;
+
+
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        System.out.println("认证 doGetAuthenticationInfo");
+
+        //从token中获取用户信息 token代表用户输入
+        String username = (String) authenticationToken.getPrincipal();
+        System.out.println(username);
+        user user  = this.userService.selectUserByusername(username);
+        //取密码
+        String pwd = user.getPassword();
+        if(pwd==null||"".equals(pwd)){
+            return null;
+        }
+        return  new SimpleAuthenticationInfo(username,user.getPassword(),this.getClass().getName());
+    }
      @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
+
          System.out.println("授权 doGetAuthorizationInfo");
          String username = (String)principalCollection.getPrimaryPrincipal();
          user user = userService.selectUserByusername(username);
@@ -51,7 +75,6 @@ public class CustomRealm extends AuthorizingRealm {
                 }
              }
          }
-             System.out.println(stringRoleList.toString());
 
 //         for(Map<String,Object> role:rolelist){
 //             stringRoleList.add(role.getRname());
@@ -64,29 +87,13 @@ public class CustomRealm extends AuthorizingRealm {
 //                 }
 //             }
 //         }
-
          SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
          simpleAuthorizationInfo.addRoles(stringRoleList);
          simpleAuthorizationInfo.addStringPermissions(stringPermissionList);
+         logger.info("---- 获取到以下权限 ----");
+         logger.info(simpleAuthorizationInfo.getStringPermissions().toString());
+         logger.info("---------------- Shiro 权限获取成功 ----------------------");
          return simpleAuthorizationInfo;
     }
-    /**
-     * 用户登录的时候会调用
-     */
 
-    @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        System.out.println("认证 doGetAuthenticationInfo");
-
-        //从token中获取用户信息 token代表用户输入
-        String username = (String) authenticationToken.getPrincipal();
-        System.out.println(username);
-        user user  = this.userService.selectUserByusername(username);
-        //取密码
-        String pwd = user.getPassword();
-        if(pwd==null||"".equals(pwd)){
-            return null;
-        }
-        return  new SimpleAuthenticationInfo(username,user.getPassword(),this.getClass().getName());
-    }
 }

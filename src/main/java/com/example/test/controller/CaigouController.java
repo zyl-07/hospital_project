@@ -27,11 +27,11 @@ public class CaigouController {
     @RequestMapping("/addcaigou")
     @ResponseBody
     public Map<String, Object> addcaigou(caigou caigou, HttpSession session) {
-        String uid = (String) session.getAttribute("userId");
+        Object uid =session.getAttribute("userId");
         Map<String, Object> map = new HashMap<>();
         if (this.caigouService.addcaigou(caigou) == 1) {
             MDC.clear();
-            MDC.put("userId",uid);
+            MDC.put("userId",uid.toString());
             operatorloger.info("增加了采购信息");
             MDC.clear();
             map.put("resultCode", 1);
@@ -92,11 +92,11 @@ public class CaigouController {
     @RequestMapping("/deletecaigou")
     @ResponseBody
     public Map<String, Object> deletecaigou(caigou caigou,HttpSession session) {
-        String uid = (String) session.getAttribute("userId");
+        Object uid =session.getAttribute("userId");
         Map<String, Object> map = new HashMap<>();
         if (this.caigouService.deletecaigou(caigou) == 1) {
             MDC.clear();
-            MDC.put("userId",uid);
+            MDC.put("userId",uid.toString());
             operatorloger.info("删除了采购信息");
             MDC.clear();
             map.put("resultCode", 1);
@@ -111,11 +111,11 @@ public class CaigouController {
 
     //修改采购订单信息
     public Map<String, Object> updatecaigou(caigou caigou,HttpSession session) {
-        String uid = (String) session.getAttribute("userId");
+        Object uid =session.getAttribute("userId");
         Map<String, Object> map = new HashMap<>();
         if (this.caigouService.updatecaigou(caigou) == 1) {
             MDC.clear();
-            MDC.put("userId",uid);
+            MDC.put("userId",uid.toString());
             operatorloger.info("修改了采购信息"+caigou.getId());
             MDC.clear();
             map.put("resultCode", 1);

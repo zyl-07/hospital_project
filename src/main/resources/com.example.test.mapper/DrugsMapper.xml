@@ -4,7 +4,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.test.mapper.DrugsMapper">
     <insert id ="insertdrug" parameterType = "drugs" useGeneratedKeys="true" keyProperty="dno">
-        insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid,remark) values(#{dname},#{dclassify},#{dnumber},#{dunit},#{dprice},#{jdtime},#{prodata},#{duedata},#{wid},#{remark});
+        insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid,remark) values(#{dname},#{dclassify},#{dnumber},#{dnumber},#{dunit},#{dprice},#{jdtime},#{prodata},#{duedata},#{wid},#{remark});
     </insert>
     <select id="selectAll" resultType="java.util.Map">
         select * from drugs left join ware on drugs.wid = ware.wid;
