@@ -13,6 +13,8 @@
     </insert>
     <!--    查看财务报表-->
     <select id="selectAll" resultType="java.util.Map">
-        select caiwubaobiao.*,drugs.dname,drugs.cqnumber,drugs.dunit,drugs.dprice from drugs,caiwubaobiao where drugs.dno = caiwubaobiao.dno;
+select * from (select drugs.dno,dname,dunit,dprice ,cqnumber,dnumber as qmnumber,1000 as cqjine
+from drugs ) as A left join (select dno as rno,sum(idnumber) as rnumber from inware group by dno)  as B
+on A.dno = B.rno left join (select dno as cno,sum(odnumber)as cnumber from outware group by dno) as C on A.dno = C.cno
     </select>
 </mapper>

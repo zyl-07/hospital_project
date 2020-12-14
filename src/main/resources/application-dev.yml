@@ -60,13 +60,6 @@ spring:
     open-in-view: false
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
 
-
-
-
-
-
-
-
 mybatis:
   #数据库类型
     type-aliases-package: com.example.test.pojo # 所有Entity别名类所在包
@@ -74,7 +67,7 @@ mybatis:
     configuration:
       log-impl:
         org.apache.ibatis.logging.stdout.StdOutImpl
-
+      call-setters-on-nulls: true
 
 
 logging:

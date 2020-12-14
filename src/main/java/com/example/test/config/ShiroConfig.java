@@ -40,12 +40,11 @@ public class ShiroConfig {
         filterChainDefinitmap.put("/admin/**","roles[admin]");
         filterChainDefinitmap.put("/log/**","roles[admin]");
 //        //有相应角色的才可以访问
-        filterChainDefinitmap.put("/drugs/**","roles[admin,仓库管理员]");
         filterChainDefinitmap.put("/inware/**","roles[仓库管理员]");
         filterChainDefinitmap.put("/outware/**","roles[仓库管理员]");
         filterChainDefinitmap.put("/drugs/**","roles[仓库管理员]");
         filterChainDefinitmap.put("/caigou/**","roles[采购管理员]");
-        filterChainDefinitmap.put("/caiwu/**","roles[admin,采购管理员]");
+        filterChainDefinitmap.put("/caiwu/**","anon");
         filterChainDefinitmap.put("/ngyaodingdan/**","roles[领药管理员]");
         //全局的,
         //过滤链是顺序执行的，从上到下
