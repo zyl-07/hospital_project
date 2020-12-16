@@ -19,9 +19,8 @@
 <!--            )-->
 <!--        </foreach>-->
 <!--    更新盘存-->
-    <update id ="updateCkanddrug" parameterType="drugsCheck">
-        update drugscheck set dpnumber=#{dpnumber} where dno = #{dno} and ckno= #{ckno};
-        update drugs  set dnumber  = #{dpnumber} where dno = #{dno};
+    <update id ="updateCkanddrug" parameterType="java.util.Map">
+        update drugs set ckdate = #{ckdate},ckoperator = #{ckoperator},dpnumber= #{dpnumber},dpnumber=#{dpnumber},remarkck = #{remarkck} where dno = #{dno};
     </update>
 <!--    更新药品信息-->
     <update id="updateDrug" parameterType="java.util.Map">

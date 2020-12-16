@@ -1,6 +1,6 @@
+-- grant all on hospital.* to 'root'@ '%' identified by '123456' with grant option ;-- 创建数据库
 -- 创建数据库
 GRANT ALL PRIVILEGES ON *.* TO 'root'@'%'WITH GRANT OPTION;
-grant all on hospital.* to 'root'@ '%' identified by '123456' with grant option ;
 flush privileges ;
 use hospital;
 -- 建表
@@ -47,32 +47,32 @@ CREATE TABLE `operation_log`
   DEFAULT CHARSET = utf8mb4 COMMENT ='操作日志表，记录什么用户什么时候做了什么操作';
 -- 插入数据
 insert into user(addr,brthday,email,invite_code,password,phone_number,rname,sex,username)
-values('四川师范大学','1999.4','231@qq.com','2322','123','12323231','小王','m','admin');
+values('四川师范大学','1999.4','231@qq.com','2322','d022646351048ac0ba397d12dfafa304','12323231','小王','m','admin');
 insert into user(addr,brthday,email,invite_code,password,phone_number,rname,sex,username)
-values('四川师范大学','1999.4','231@qq.com','2322','123','12323231','小王','m','xw');
+values('四川师范大学','1999.4','231@qq.com','2322','d022646351048ac0ba397d12dfafa304','12323231','小王','m','xw');
 insert into user(addr,brthday,email,invite_code,password,phone_number,rname,sex,username)
-values('四川师范大学','1999.4','231@qq.com','2322','123','12323231','小王','m','xm');
+values('四川师范大学','1999.4','231@qq.com','2322','d022646351048ac0ba397d12dfafa304','12323231','小王','m','xm');
 insert into ware(wname) values('西药库');
 insert into ware(wname) values('中药库');
 insert into ware(wname) values('其他药库');
-insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid)
-values('111','感冒药',100,'盒',23.5,'2','2020/11/19','2022/11/19',1);
-insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid)
-values('222','感冒药',100,'盒',23.5,'2','2020/11/19','2022/11/19',1);
-insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid)
-values('333','感冒药',100,'盒',23.5,'2','2020/11/19','2022/11/19',1);
-insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid)
-values('444','感冒药',100,'盒',23.5,'2','2020/11/19','2022/11/19',2);
-insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid)
-values('555','感冒药',100,'盒',23.5,'2','2020/11/19','2022/11/19',2);
-insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid)
-values('666','感冒药',100,'盒',23.5,'2','2020/11/19','2022/11/19',2);
-insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid)
-values('777','感冒药',100,'盒',23.5,'2','2020/11/19','2022/11/19',3);
-insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid)
-values('888','感冒药',100,'盒',23.5,'2','2020/11/19','2022/11/19',3);
-insert into drugs(dname,dclassify,dnumber,dunit,dprice,jdtime,prodata,duedata,wid)
-values('999','感冒药',100,'盒',23.5,'2','2020/11/19','2022/11/19',3);
+insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid)
+values('111','感冒药',100,100,'盒',23.5,'2','2020/11/19','2022/11/19',1);
+insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid)
+values('222','感冒药',100,100,'盒',23.5,'2','2020/11/19','2022/11/19',1);
+insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid)
+values('333','感冒药',100,100,'盒',23.5,'2','2020/11/19','2022/11/19',1);
+insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid)
+values('444','感冒药',100,100,'盒',23.5,'2','2020/11/19','2022/11/19',2);
+insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid)
+values('555','感冒药',100,100,'盒',23.5,'2','2020/11/19','2022/11/19',2);
+insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid)
+values('666','感冒药',100,100,'盒',23.5,'2','2020/11/19','2022/11/19',2);
+insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid)
+values('777','感冒药',100,100,'盒',23.5,'2','2020/11/19','2022/11/19',3);
+insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid)
+values('888','感冒药',100,100,'盒',23.5,'2','2020/11/19','2022/11/19',3);
+insert into drugs(dname,dclassify,dnumber,cqnumber,dunit,dprice,jdtime,prodata,duedata,wid)
+values('999','感冒药',100,100,'盒',23.5,'2','2020/11/19','2022/11/19',3);
 insert into role(rname) values('admin');
 insert into role(rname) values('仓库管理员');
 insert into role(rname) values('采购管理员');
@@ -88,6 +88,9 @@ insert into permission(pname) values('编辑入库');
 insert into permission(pname) values('编辑采购');
 insert into permission(pname) values('编辑领药');
 insert into permission(pname) values('药品盘存');
+
+
+
 
 
 

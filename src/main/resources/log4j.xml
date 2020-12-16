@@ -26,7 +26,7 @@
     <appender name="loginAppender" class="org.apache.log4j.jdbc.JDBCAppender">
         <param name="driver" value="com.mysql.cj.jdbc.Driver"/>
         <param name="URL"
-               value="jdbc:mysql://127.0.0.1:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
+               value="jdbc:mysql://mysql:3306/hospital?characterEncoding=UTF-8&amp;serverTimezone=Asia/Shanghai"/>
         <param name="user" value="root"/>
         <param name="password" value="123456"/>
 

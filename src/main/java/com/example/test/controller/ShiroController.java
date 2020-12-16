@@ -66,6 +66,7 @@ public class ShiroController {
             session.setAttribute("userId",user.getUsername());
             MDC.clear();
             MDC.put("userId",user.getUsername());
+            MDC.put("ipAddress",request.getHeader("Origin"));
             loginloger.info("登录");
             MDC.clear();
         }

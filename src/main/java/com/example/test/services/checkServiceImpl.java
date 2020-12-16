@@ -1,6 +1,7 @@
 package com.example.test.services;
 
 import com.example.test.mapper.checkMapper;
+import com.example.test.pojo.drugs;
 import com.example.test.pojo.drugsCheck;
 import org.springframework.stereotype.Service;
 
@@ -26,8 +27,8 @@ public class checkServiceImpl implements  checkService{
     }
 
     @Override
-    public int updateCk(drugsCheck drugsCheck) {
-        if (this.checkMapper.updateCkanddrug(drugsCheck) != 0) {
+    public int updateCk(drugs drugs) {
+        if (this.checkMapper.updateCkanddrug(drugs) != 0) {
             return 1;
         } else {
             return -1;

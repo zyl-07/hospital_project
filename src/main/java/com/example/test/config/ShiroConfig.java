@@ -36,6 +36,7 @@ public class ShiroConfig {
         filterChainDefinitmap.put("/pub/**","anon");
         //登录用户才可以访问
 //        //管理员角色才可以
+        filterChainDefinitmap.put("/limit/selectAllUserRole","authc");
         filterChainDefinitmap.put("/limit/**","roles[admin]");
         filterChainDefinitmap.put("/admin/**","roles[admin]");
         filterChainDefinitmap.put("/log/**","roles[admin]");

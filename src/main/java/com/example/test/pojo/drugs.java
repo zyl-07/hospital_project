@@ -28,6 +28,10 @@ public class drugs  {
     String duedata ;//有效期
     String remark;
     Integer cqnumber;//初期数量
+    String ckdate;//盘点日期
+    String ckoperator;//操作员
+    Integer dpnumber;//盘存数量
+    String remarkck;
     //我们在上面的代码中给了Student对Course进行级联保存
 // （cascade=CascadeType.PERSIST）的权限。
 // 此时，若Student实体持有的Course实体在数据库中不存在时，保存该Student时，

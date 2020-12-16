@@ -1,5 +1,6 @@
 package com.example.test.controller;
 
+import com.example.test.pojo.drugs;
 import com.example.test.pojo.drugsCheck;
 import com.example.test.services.checkService;
 import org.slf4j.LoggerFactory;
@@ -84,13 +85,13 @@ public class CheckController {
     @ResponseBody
 
     //修改
-    public Map<String,Object> updateCk(drugsCheck drugsCheck,HttpSession session){
+    public Map<String,Object> updateCk(drugs drugs, HttpSession session){
         Object uid = session.getAttribute("userId");
         Map<String, Object> map = new HashMap<>();
-        if(this.checkService.updateCk(drugsCheck)==1) {
+        if(this.checkService.updateCk(drugs)==1) {
             MDC.clear();
             MDC.put("userId",uid.toString());
-            operatorloger.info("修改了盘存信息"+drugsCheck.getId());
+            operatorloger.info("修改了盘存信息"+drugs.getDno());
             MDC.clear();
             map.put("resultCode", 1);
         }

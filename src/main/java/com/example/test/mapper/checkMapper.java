@@ -14,7 +14,7 @@ public interface checkMapper {
     int addcheck(drugsCheck drugsCheck);
     List<Map<String,Object>> selectCr(drugsCheck drugsCheck);
     List<Map<String,Object>> selectAll();
-    int updateCkanddrug(drugsCheck drugsCheck);
+    int updateCkanddrug(drugs drugs);
     int deleteCk(drugsCheck drugsCheck);
     List<drugs> newCr(drugs drugs);
 //    更新药品

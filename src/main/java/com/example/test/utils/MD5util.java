@@ -4,7 +4,6 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 
 public class MD5util {
     String hashName="MD5";
-
     public   Object result(String pwd){
         Object result = new SimpleHash(this.hashName,pwd,null,2);
         System.out.println(result);
